@@ -3,7 +3,7 @@ Contributors: cyclonecode
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 3.1.0
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 5.6
 Stable tag: 1.4.5
 License: GPLv2 or later
@@ -154,4 +154,3 @@ Fixes a bug where the plugin could not be deleted.
 == Changelog ==
 
 = dev
-- Fix faulty clean() method in settings.

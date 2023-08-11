@@ -11,8 +11,8 @@ $pluginSettings = array(
 );
 foreach ($settings['php_settings'] as $value) {
     if (!empty($value)) {
-        list($key, $val) = explode('=', $value);
-        $pluginSettings[$key] = $val;
+        $setting = explode('=', $value);
+        $pluginSettings[$setting[0]] = isset($setting[1]) ? $setting[1] : '';
     }
 }
 
@@ -66,8 +66,8 @@ uasort($plugins, function ($a, $b) {
     return strcmp(strtolower($a['Name']), strtolower($b['Name']));
 });
 $activePlugins = array_values(get_option('active_plugins'));
-foreach ($plugins as $key => &$plugin) {
-    $plugin['Active'] = in_array($key, $activePlugins);
+foreach ($plugins as $key => $plugin) {
+    $plugins[$key]['Active'] = in_array($key, $activePlugins);
 }
 
 // Get theme information.

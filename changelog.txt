@@ -1,8 +1,6 @@
 = 1.4.5
-
-- Bump minimum support PHP version.
-- Update Pro notice.
-- Bump dependencies.
+- Fix faulty clean() method in settings.
+- Fix bug on status page where duplicate plugins was shown as enabled/disabled.
 
 = 1.4.4
 - Fix bug where comments that included '=' where not saved.
