@@ -1,7 +1,7 @@
 {
     "name": "cyclonecode/custom-php-settings",
     "type": "wordpress-plugin",
-    "version": "1.4.5",
+    "version": "1.4.6",
     "keywords": [
         "wordpress",
         "plugin",

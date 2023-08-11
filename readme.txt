@@ -153,4 +153,5 @@ Fixes a bug where the plugin could not be deleted.
 
 == Changelog ==
 
-= dev
+= current
+- Fix bug on status page where duplicate plugins was shown as enabled/disabled.

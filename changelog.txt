@@ -1,6 +1,5 @@
 = 1.4.5
 - Fix faulty clean() method in settings.
-- Fix bug on status page where duplicate plugins was shown as enabled/disabled.
 
 = 1.4.4
 - Fix bug where comments that included '=' where not saved.
