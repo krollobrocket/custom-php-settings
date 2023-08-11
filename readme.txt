@@ -5,7 +5,7 @@ Tags: php, htaccess, settings, apache, apache2
 Requires at least: 3.1.0
 Tested up to: 6.3
 Requires PHP: 5.6
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,9 @@ Fixes a bug where the plugin could not be deleted.
 
 = 1.4.3
 - Fixes a bug on status page when no custom settings has been added.
+
+= 1.4.6
+- Fixes a bug on status page where some plugins where displayed multiple times.
 
 == Screenshots ==
 
