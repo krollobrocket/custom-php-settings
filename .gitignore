@@ -1,5 +1,6 @@
 .idea
 vendor/*
+vendor/composer/installers/*
 !vendor/autoload.php
 !vendor/composer
 !vendor/cyclonecode

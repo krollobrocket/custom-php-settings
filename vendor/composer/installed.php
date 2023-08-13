@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'cyclonecode/custom-php-settings',
-        'pretty_version' => '1.4.5',
-        'version' => '1.4.5.0',
+        'pretty_version' => '1.4.7',
+        'version' => '1.4.7.0',
         'reference' => NULL,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -20,8 +20,8 @@
             'dev_requirement' => false,
         ),
         'cyclonecode/custom-php-settings' => array(
-            'pretty_version' => '1.4.5',
-            'version' => '1.4.5.0',
+            'pretty_version' => '1.4.7',
+            'version' => '1.4.7.0',
             'reference' => NULL,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',

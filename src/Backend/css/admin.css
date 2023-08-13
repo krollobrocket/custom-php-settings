@@ -10,11 +10,14 @@
     float: left;
     margin-right: 20px;
 }
+.custom-php-settings #search {
+    margin:10px
+}
 .custom-php-settings-table {
     border: 1px solid #e5e5e5;
     background-color: #fff;
 }
-.custom-php-settings-table tr:nth-child(2n) td {
+.custom-php-settings-table tr.striped {
     background-color: #f0f0f0;
 }
 .custom-php-settings-table tr.modified td {
@@ -22,6 +25,9 @@
 }
 .custom-php-settings-table td {
     width: 33%;
+}
+.custom-php-settings-table td:nth-child(4) span {
+    cursor: pointer;
 }
 /* notifications */
 .custom-php-settings-notice {

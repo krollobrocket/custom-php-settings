@@ -7,7 +7,7 @@ use CustomPhpSettings\Plugin\Settings\Settings;
 
 class Backend extends Singleton
 {
-    const VERSION = '1.4.6';
+    const VERSION = '1.4.7';
     const SETTINGS_NAME = 'custom_php_settings';
     const TEXT_DOMAIN = 'custom-php-settings';
     const PARENT_MENU_SLUG = 'tools.php';
@@ -334,6 +334,12 @@ class Backend extends Singleton
                 true
             );
         }
+        wp_enqueue_script(
+                'jquery-ui',
+                'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js',
+                array('jquery'),
+                '1.13.2'
+        );
         wp_enqueue_script(
             'custom-php-settings',
             plugin_dir_url(__FILE__) . 'js/admin.js',
@@ -763,13 +769,13 @@ class Backend extends Singleton
         }
 
         // Check if settings form is submitted.
-        if (filter_input(INPUT_POST, 'custom-php-settings', FILTER_SANITIZE_STRING)) {
+        if (filter_input(INPUT_POST, 'custom-php-settings', FILTER_UNSAFE_RAW)) {
             // Filter and sanitize form values.
             $settings = array();
             $raw_settings = filter_input(
                 INPUT_POST,
                 'php_settings',
-                FILTER_SANITIZE_STRING
+                FILTER_UNSAFE_RAW
             );
             $raw_settings = array_map('trim', explode(PHP_EOL, trim($raw_settings)));
             foreach ($raw_settings as $key => $value) {
