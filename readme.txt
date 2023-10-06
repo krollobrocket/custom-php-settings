@@ -158,3 +158,4 @@ Fixes a bug where the plugin could not be deleted.
 
 = 1.5.x
 - Use string for text domain.
+- Stripe all tables and sort entries.

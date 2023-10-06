@@ -14,14 +14,14 @@ $ini_settings = $this->getIniSettings();
         </thead>
         <?php $i = 0; ?>
         <?php foreach ($ini_settings as $key => $value) : ?>
-            <?php $class = ($value['global_value'] !== $value['local_value'] ? 'modified' : ''); ?>
-            <?php $class .= (++$i & 1) ? ' striped' : ''; ?>
-            <tr class="<?php echo $class; ?>">
-                <td><?php echo $key; ?></td>
-                <td><?php echo $value['local_value']; ?></td>
-                <td><?php echo $value['global_value']; ?></td>
-                <td><span title="<?php _e('Copy', 'custom-php-settings'); ?>" class="dashicons dashicons-insert"></span></td>
-            </tr>
+        <?php $class = ($value['global_value'] !== $value['local_value'] ? 'modified' : ''); ?>
+        <?php $class .= (++$i & 1) ? ' striped' : ''; ?>
+        <tr class="<?php echo $class; ?>">
+            <td><?php echo $key; ?></td>
+            <td><?php echo $value['local_value']; ?></td>
+            <td><?php echo $value['global_value']; ?></td>
+            <td><span title="<?php _e('Copy', 'custom-php-settings'); ?>" class="dashicons dashicons-insert"></span></td>
+        </tr>
         <?php endforeach; ?>
     </table>
 </div>

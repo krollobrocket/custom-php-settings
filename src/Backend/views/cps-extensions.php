@@ -16,8 +16,10 @@ foreach ($extensions as $key => $extension) {
             <th><?php echo __('Extension', 'custom-php-settings'); ?></th>
             <th><?php echo __('Version', 'custom-php-settings'); ?></th>
         </thead>
+        <?php $i = 0; ?>
         <?php foreach ($extensions as $key => $extension) : ?>
-        <tr>
+        <?php $attribute = (++$i & 1) ? ' class="striped"' : ''; ?>
+        <tr<?php echo $attribute; ?>>
             <td><?php echo $extension['name']; ?></td>
             <td><?php echo $extension['version']; ?></td>
         </tr>

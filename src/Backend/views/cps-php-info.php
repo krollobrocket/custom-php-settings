@@ -35,8 +35,10 @@ $env = array(
             <th><?php echo __('Name', 'custom-php-settings'); ?></th>
             <th><?php echo __('Value', 'custom-php-settings'); ?></th>
         </thead>
+        <?php $i = 0; ?>
         <?php foreach ($env as $key => $value) : ?>
-        <tr>
+        <?php $attribute = (++$i & 1) ? ' class="striped"' : ''; ?>
+        <tr<?php echo $attribute; ?>>
             <td><?php echo $key; ?></td>
             <td><?php echo $value; ?></td>
         </tr>

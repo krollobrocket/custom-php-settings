@@ -49,6 +49,17 @@ class Backend extends Singleton
         $this->addActions();
         $this->addFilters();
         $this->localize();
+        $this->sortSuperGlobals();
+    }
+
+    /**
+     * Sort super globals.
+     */
+    protected function sortSuperGlobals()
+    {
+        ksort($_COOKIE);
+        ksort($_ENV);
+        ksort($_SERVER);
     }
 
     /**
