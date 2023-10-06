@@ -1,39 +1,39 @@
 <?php
 $env = array(
-    __('System name', self::TEXT_DOMAIN) => php_uname(),
-    __('Architecture', self::TEXT_DOMAIN) => PHP_INT_SIZE === 8 ? 'x64' : 'x86',
-    __('PHP Version', self::TEXT_DOMAIN) => phpversion(),
-    __('Debug build', self::TEXT_DOMAIN) => __(defined('ZEND_DEBUG_BUILD') && ZEND_DEBUG_BUILD ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Zend Engine version', self::TEXT_DOMAIN) => zend_version(),
-    __('Server Api', self::TEXT_DOMAIN) => php_sapi_name(),
-    __('Configuration File (php.ini) Path', self::TEXT_DOMAIN) => defined('PHP_CONFIG_FILE_PATH') ? PHP_CONFIG_FILE_PATH : '',
-    __('Extension directory', self::TEXT_DOMAIN) => defined('PHP_EXTENSION_DIR') ? PHP_EXTENSION_DIR : '',
-    __('Loaded configuration file', self::TEXT_DOMAIN) => php_ini_loaded_file(),
-    __('Additional configuration files', self::TEXT_DOMAIN) => php_ini_scanned_files(),
-    __('Include path', self::TEXT_DOMAIN) => get_include_path(),
-    __('PHP Script Owner', self::TEXT_DOMAIN) => get_current_user(),
-    __('PHP Script Owner UID', self::TEXT_DOMAIN) => getmyuid(),
-    __('PHP Script Owner GUID', self::TEXT_DOMAIN) => getmygid(),
-    __('PHP process ID', self::TEXT_DOMAIN) => getmypid(),
-    __('Memory usage', self::TEXT_DOMAIN) => $this->formatBytes(memory_get_usage()),
-    __('Memory peak usage', self::TEXT_DOMAIN) => $this->formatBytes(memory_get_peak_usage()),
-    __('Temporary directory', self::TEXT_DOMAIN) => sys_get_temp_dir(),
-    __('User INI file', self::TEXT_DOMAIN) => ini_get('user_ini.filename'),
-    __('User INI file cache TTL', self::TEXT_DOMAIN) => ini_get('user_ini.cache_ttl'),
-    __('Thread Safety', self::TEXT_DOMAIN) => __(defined('ZEND_THREAD_SAFE') && ZEND_THREAD_SAFE ? 'enabled' : 'disabled', self::TEXT_DOMAIN),
-    __('IPv6 Support', self::TEXT_DOMAIN) => __(extension_loaded('sockets') && defined('AF_INET6') ? 'enabled' : 'disabled', self::TEXT_DOMAIN),
-    __('PHP Streams', self::TEXT_DOMAIN) => implode(', ', stream_get_wrappers()),
-    __('Stream Socket Transports', self::TEXT_DOMAIN) => implode(', ', stream_get_transports()),
-    __('Stream Filters', self::TEXT_DOMAIN) => implode(', ', stream_get_filters()),
-    __('GC enabled', self::TEXT_DOMAIN) => __(gc_enabled() ? 'enabled' : 'disabled', self::TEXT_DOMAIN),
+    __('System name', 'custom-php-settings') => php_uname(),
+    __('Architecture', 'custom-php-settings') => PHP_INT_SIZE === 8 ? 'x64' : 'x86',
+    __('PHP Version', 'custom-php-settings') => phpversion(),
+    __('Debug build', 'custom-php-settings') => __(defined('ZEND_DEBUG_BUILD') && ZEND_DEBUG_BUILD ? 'yes' : 'no', 'custom-php-settings'),
+    __('Zend Engine version', 'custom-php-settings') => zend_version(),
+    __('Server Api', 'custom-php-settings') => php_sapi_name(),
+    __('Configuration File (php.ini) Path', 'custom-php-settings') => defined('PHP_CONFIG_FILE_PATH') ? PHP_CONFIG_FILE_PATH : '',
+    __('Extension directory', 'custom-php-settings') => defined('PHP_EXTENSION_DIR') ? PHP_EXTENSION_DIR : '',
+    __('Loaded configuration file', 'custom-php-settings') => php_ini_loaded_file(),
+    __('Additional configuration files', 'custom-php-settings') => php_ini_scanned_files(),
+    __('Include path', 'custom-php-settings') => get_include_path(),
+    __('PHP Script Owner', 'custom-php-settings') => get_current_user(),
+    __('PHP Script Owner UID', 'custom-php-settings') => getmyuid(),
+    __('PHP Script Owner GUID', 'custom-php-settings') => getmygid(),
+    __('PHP process ID', 'custom-php-settings') => getmypid(),
+    __('Memory usage', 'custom-php-settings') => $this->formatBytes(memory_get_usage()),
+    __('Memory peak usage', 'custom-php-settings') => $this->formatBytes(memory_get_peak_usage()),
+    __('Temporary directory', 'custom-php-settings') => sys_get_temp_dir(),
+    __('User INI file', 'custom-php-settings') => ini_get('user_ini.filename'),
+    __('User INI file cache TTL', 'custom-php-settings') => ini_get('user_ini.cache_ttl'),
+    __('Thread Safety', 'custom-php-settings') => __(defined('ZEND_THREAD_SAFE') && ZEND_THREAD_SAFE ? 'enabled' : 'disabled', 'custom-php-settings'),
+    __('IPv6 Support', 'custom-php-settings') => __(extension_loaded('sockets') && defined('AF_INET6') ? 'enabled' : 'disabled', 'custom-php-settings'),
+    __('PHP Streams', 'custom-php-settings') => implode(', ', stream_get_wrappers()),
+    __('Stream Socket Transports', 'custom-php-settings') => implode(', ', stream_get_transports()),
+    __('Stream Filters', 'custom-php-settings') => implode(', ', stream_get_filters()),
+    __('GC enabled', 'custom-php-settings') => __(gc_enabled() ? 'enabled' : 'disabled', 'custom-php-settings'),
 );
 ?>
 <div class="wrap">
     <?php require_once('cps-tabs.php'); ?>
     <table class="custom-php-settings-table widefat">
         <thead>
-            <th><?php echo __('Name', self::TEXT_DOMAIN); ?></th>
-            <th><?php echo __('Value', self::TEXT_DOMAIN); ?></th>
+            <th><?php echo __('Name', 'custom-php-settings'); ?></th>
+            <th><?php echo __('Value', 'custom-php-settings'); ?></th>
         </thead>
         <?php foreach ($env as $key => $value) : ?>
         <tr>

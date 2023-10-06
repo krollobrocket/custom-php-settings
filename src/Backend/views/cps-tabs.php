@@ -2,45 +2,45 @@
 $variables_order = ini_get('variables_order');
 $tabs = array(
     'general' => array(
-        'label' => __('Editor', self::TEXT_DOMAIN),
+        'label' => __('Editor', 'custom-php-settings'),
     ),
     'settings' => array(
-        'label' => __('Settings', self::TEXT_DOMAIN),
+        'label' => __('Settings', 'custom-php-settings'),
     ),
     'info' => array(
-        'label' => __('PHP Information', self::TEXT_DOMAIN),
+        'label' => __('PHP Information', 'custom-php-settings'),
         'children' => array(
             'php-info' => array(
-                'label' => __('PHP', self::TEXT_DOMAIN),
+                'label' => __('PHP', 'custom-php-settings'),
             ),
             'extensions' => array(
-                'label' => __('Extensions', self::TEXT_DOMAIN),
+                'label' => __('Extensions', 'custom-php-settings'),
             )
         ),
     ),
 );
 if (strstr(php_sapi_name(), 'apache')) {
     $tabs['apache'] = array(
-        'label' => __('Apache', self::TEXT_DOMAIN),
+        'label' => __('Apache', 'custom-php-settings'),
     );
 }
 if (strchr($variables_order, 'C') && !empty($_COOKIE)) {
     $tabs['info']['children']['cookie-vars'] = array(
-        'label' => __('COOKIE', self::TEXT_DOMAIN),
+        'label' => __('COOKIE', 'custom-php-settings'),
     );
 }
 if (strchr($variables_order, 'S') && !empty($_SERVER)) {
     $tabs['info']['children']['server-vars'] = array(
-        'label' => __('SERVER', self::TEXT_DOMAIN),
+        'label' => __('SERVER', 'custom-php-settings'),
     );
 }
 if (strchr($variables_order, 'E') && !empty($_ENV)) {
     $tabs['info']['children']['env-vars'] = array(
-        'label' => __('ENV', self::TEXT_DOMAIN),
+        'label' => __('ENV', 'custom-php-settings'),
     );
 }
 $tabs['status'] = array(
-  'label' => __('Status', self::TEXT_DOMAIN),
+  'label' => __('Status', 'custom-php-settings'),
 );
 ?>
 <h2></h2>

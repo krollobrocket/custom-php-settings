@@ -2,8 +2,8 @@
     <?php require_once('cps-tabs.php'); ?>
     <table class="custom-php-settings-table widefat">
         <thead>
-        <th><?php echo __('Name', self::TEXT_DOMAIN); ?></th>
-        <th><?php echo __('Value', self::TEXT_DOMAIN); ?></th>
+        <th><?php echo __('Name', 'custom-php-settings'); ?></th>
+        <th><?php echo __('Value', 'custom-php-settings'); ?></th>
         </thead>
         <?php foreach ($_COOKIE as $name => $value) : ?>
             <tr>

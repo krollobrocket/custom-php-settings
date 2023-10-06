@@ -23,34 +23,34 @@ if (isset($php_settings)) {
                                   name="php_settings"
                                   class="widefat textarea"><?php echo $settings; ?></textarea>
                     </fieldset>
-                    <p class="description"><?php echo __('Custom PHP Settings. Each setting should be in the form key=value.', self::TEXT_DOMAIN); ?></p>
+                    <p class="description"><?php echo __('Custom PHP Settings. Each setting should be in the form key=value.', 'custom-php-settings'); ?></p>
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="checkbox" name="update_config"<?php checked($this->settings->get('update_config')); ?> />
-                    <span class="description"><?php echo __('Update configuration file.', self::TEXT_DOMAIN); ?></span>
+                    <span class="description"><?php echo __('Update configuration file.', 'custom-php-settings'); ?></span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="checkbox" name="restore_config"<?php checked($this->settings->get('restore_config')); ?> />
-                    <span class="description"><?php echo __('The configuration file will be restored when the plugin is deactivated or uninstalled.', self::TEXT_DOMAIN); ?></span>
+                    <span class="description"><?php echo __('The configuration file will be restored when the plugin is deactivated or uninstalled.', 'custom-php-settings'); ?></span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="checkbox" name="trim_comments"<?php checked($this->settings->get('trim_comments')); ?> />
-                    <span class="description"><?php echo __('Do not store any comments in the configuration file.', self::TEXT_DOMAIN); ?></span>
+                    <span class="description"><?php echo __('Do not store any comments in the configuration file.', 'custom-php-settings'); ?></span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="checkbox" name="trim_whitespaces"<?php checked($this->settings->get('trim_whitespaces')); ?> />
-                    <span class="description"><?php echo __('Do not store any blank lines in the configuration file.', self::TEXT_DOMAIN); ?></span>
+                    <span class="description"><?php echo __('Do not store any blank lines in the configuration file.', 'custom-php-settings'); ?></span>
                 </td>
             </tr>
         </table>
-        <?php echo get_submit_button(__('Save settings', self::TEXT_DOMAIN), 'primary', 'custom-php-settings'); ?>
+        <?php echo get_submit_button(__('Save settings', 'custom-php-settings'), 'primary', 'custom-php-settings'); ?>
     </form>
 </div>

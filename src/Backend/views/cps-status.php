@@ -2,12 +2,12 @@
 // Get plugin information.
 $settings = $this->settings->toOptionsArray();
 $pluginSettings = array(
-    __('Version', self::TEXT_DOMAIN) => $settings['version'],
-    __('Update configuration file', self::TEXT_DOMAIN) => __($settings['update_config'] ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Restore configuration file', self::TEXT_DOMAIN) => __($settings['restore_config'] ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Remove comments', self::TEXT_DOMAIN) => __($settings['trim_comments'] ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Remove whitespaces', self::TEXT_DOMAIN) => __($settings['trim_whitespaces'] ? 'yes' : 'no', self::TEXT_DOMAIN) . PHP_EOL,
-    __('=== Custom PHP Settings ===', self::TEXT_DOMAIN) => '',
+    __('Version', 'custom-php-settings') => $settings['version'],
+    __('Update configuration file', 'custom-php-settings') => __($settings['update_config'] ? 'yes' : 'no', 'custom-php-settings'),
+    __('Restore configuration file', 'custom-php-settings') => __($settings['restore_config'] ? 'yes' : 'no', 'custom-php-settings'),
+    __('Remove comments', 'custom-php-settings') => __($settings['trim_comments'] ? 'yes' : 'no', 'custom-php-settings'),
+    __('Remove whitespaces', 'custom-php-settings') => __($settings['trim_whitespaces'] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL,
+    __('=== Custom PHP Settings ===', 'custom-php-settings') => '',
 );
 foreach ($settings['php_settings'] as $value) {
     if (!empty($value)) {
@@ -18,46 +18,46 @@ foreach ($settings['php_settings'] as $value) {
 
 // Get PHP information.
 $phpInfo = array(
-    __('System name', self::TEXT_DOMAIN) => php_uname(),
-    __('Architecture', self::TEXT_DOMAIN) => PHP_INT_SIZE === 8 ? 'x64' : 'x86',
-    __('PHP Version', self::TEXT_DOMAIN) => phpversion(),
-    __('Debug build', self::TEXT_DOMAIN) => __(defined('ZEND_DEBUG_BUILD') && ZEND_DEBUG_BUILD ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Zend Engine version', self::TEXT_DOMAIN) => zend_version(),
-    __('Server Api', self::TEXT_DOMAIN) => php_sapi_name(),
-    __('Configuration File (php.ini) Path', self::TEXT_DOMAIN) => defined('PHP_CONFIG_FILE_PATH') ? PHP_CONFIG_FILE_PATH : '',
-    __('Extension directory', self::TEXT_DOMAIN) => defined('PHP_EXTENSION_DIR') ? PHP_EXTENSION_DIR : '',
-    __('Loaded configuration file', self::TEXT_DOMAIN) => php_ini_loaded_file(),
-    __('Additional configuration files', self::TEXT_DOMAIN) => php_ini_scanned_files(),
-    __('Include path', self::TEXT_DOMAIN) => get_include_path(),
-    __('User INI file', self::TEXT_DOMAIN) => ini_get('user_ini.filename'),
-    __('User INI file cache TTL', self::TEXT_DOMAIN) => ini_get('user_ini.cache_ttl'),
-    __('Thread Safety', self::TEXT_DOMAIN) => __(defined('ZEND_THREAD_SAFE') && ZEND_THREAD_SAFE ? 'enabled' : 'disabled', self::TEXT_DOMAIN),
-    __('IPv6 Support', self::TEXT_DOMAIN) => __(extension_loaded('sockets') && defined('AF_INET6') ? 'enabled' : 'disabled', self::TEXT_DOMAIN),
-    __('PHP Streams', self::TEXT_DOMAIN) => implode(', ', stream_get_wrappers()),
-    __('Stream Socket Transports', self::TEXT_DOMAIN) => implode(', ', stream_get_transports()),
-    __('Stream Filters', self::TEXT_DOMAIN) => implode(', ', stream_get_filters()),
-    __('GC enabled', self::TEXT_DOMAIN) => __(gc_enabled() ? 'enabled' : 'disabled', self::TEXT_DOMAIN) . PHP_EOL,
-    __('=== PHP Variables ===', self::TEXT_DOMAIN) => '',
-    __('max_execution_time', self::TEXT_DOMAIN) => ini_get('max_execution_time'),
-    __('max_input_time', self::TEXT_DOMAIN) => ini_get('max_input_time'),
-    __('memory_limit', self::TEXT_DOMAIN) => ini_get('memory_limit'),
-    __('upload_max_filesize', self::TEXT_DOMAIN) => ini_get('upload_max_filesize'),
-    __('post_max_size', self::TEXT_DOMAIN) => ini_get('post_max_size'),
-    __('variables_order', self::TEXT_DOMAIN) => ini_get('variables_order'),
-    __('safe_mode', self::TEXT_DOMAIN) => ini_get('safe_mode'),
-    __('enable_dl', self::TEXT_DOMAIN) => ini_get('enable_dl'),
-    __('register_globals', self::TEXT_DOMAIN) => ini_get('register_globals'),
+    __('System name', 'custom-php-settings') => php_uname(),
+    __('Architecture', 'custom-php-settings') => PHP_INT_SIZE === 8 ? 'x64' : 'x86',
+    __('PHP Version', 'custom-php-settings') => phpversion(),
+    __('Debug build', 'custom-php-settings') => __(defined('ZEND_DEBUG_BUILD') && ZEND_DEBUG_BUILD ? 'yes' : 'no', 'custom-php-settings'),
+    __('Zend Engine version', 'custom-php-settings') => zend_version(),
+    __('Server Api', 'custom-php-settings') => php_sapi_name(),
+    __('Configuration File (php.ini) Path', 'custom-php-settings') => defined('PHP_CONFIG_FILE_PATH') ? PHP_CONFIG_FILE_PATH : '',
+    __('Extension directory', 'custom-php-settings') => defined('PHP_EXTENSION_DIR') ? PHP_EXTENSION_DIR : '',
+    __('Loaded configuration file', 'custom-php-settings') => php_ini_loaded_file(),
+    __('Additional configuration files', 'custom-php-settings') => php_ini_scanned_files(),
+    __('Include path', 'custom-php-settings') => get_include_path(),
+    __('User INI file', 'custom-php-settings') => ini_get('user_ini.filename'),
+    __('User INI file cache TTL', 'custom-php-settings') => ini_get('user_ini.cache_ttl'),
+    __('Thread Safety', 'custom-php-settings') => __(defined('ZEND_THREAD_SAFE') && ZEND_THREAD_SAFE ? 'enabled' : 'disabled', 'custom-php-settings'),
+    __('IPv6 Support', 'custom-php-settings') => __(extension_loaded('sockets') && defined('AF_INET6') ? 'enabled' : 'disabled', 'custom-php-settings'),
+    __('PHP Streams', 'custom-php-settings') => implode(', ', stream_get_wrappers()),
+    __('Stream Socket Transports', 'custom-php-settings') => implode(', ', stream_get_transports()),
+    __('Stream Filters', 'custom-php-settings') => implode(', ', stream_get_filters()),
+    __('GC enabled', 'custom-php-settings') => __(gc_enabled() ? 'enabled' : 'disabled', 'custom-php-settings') . PHP_EOL,
+    __('=== PHP Variables ===', 'custom-php-settings') => '',
+    __('max_execution_time', 'custom-php-settings') => ini_get('max_execution_time'),
+    __('max_input_time', 'custom-php-settings') => ini_get('max_input_time'),
+    __('memory_limit', 'custom-php-settings') => ini_get('memory_limit'),
+    __('upload_max_filesize', 'custom-php-settings') => ini_get('upload_max_filesize'),
+    __('post_max_size', 'custom-php-settings') => ini_get('post_max_size'),
+    __('variables_order', 'custom-php-settings') => ini_get('variables_order'),
+    __('safe_mode', 'custom-php-settings') => ini_get('safe_mode'),
+    __('enable_dl', 'custom-php-settings') => ini_get('enable_dl'),
+    __('register_globals', 'custom-php-settings') => ini_get('register_globals'),
 );
 
 // Get Wordpress information.
 $wpInfo = array(
-    __('Version', self::TEXT_DOMAIN) => get_bloginfo('version'),
-    __('Multisite', self::TEXT_DOMAIN) => __(is_multisite() ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Site address', self::TEXT_DOMAIN) => get_bloginfo('url'),
-    __('Debug mode', self::TEXT_DOMAIN) => __(WP_DEBUG ? 'yes' : 'no', self::TEXT_DOMAIN),
-    __('Memory limit', self::TEXT_DOMAIN) => WP_MEMORY_LIMIT,
-    __('Cron', self::TEXT_DOMAIN) => __(defined('DISABLE_WP_CRON') && DISABLE_WP_CRON ? 'no' : 'yes', self::TEXT_DOMAIN),
-    __('Language', self::TEXT_DOMAIN) => get_locale(),
+    __('Version', 'custom-php-settings') => get_bloginfo('version'),
+    __('Multisite', 'custom-php-settings') => __(is_multisite() ? 'yes' : 'no', 'custom-php-settings'),
+    __('Site address', 'custom-php-settings') => get_bloginfo('url'),
+    __('Debug mode', 'custom-php-settings') => __(WP_DEBUG ? 'yes' : 'no', 'custom-php-settings'),
+    __('Memory limit', 'custom-php-settings') => WP_MEMORY_LIMIT,
+    __('Cron', 'custom-php-settings') => __(defined('DISABLE_WP_CRON') && DISABLE_WP_CRON ? 'no' : 'yes', 'custom-php-settings'),
+    __('Language', 'custom-php-settings') => get_locale(),
 );
 
 // Get plugin information.
@@ -98,9 +98,9 @@ $theme = wp_get_theme();
                     echo '=== Configuration File ===' . PHP_EOL;
                     $configFilePath = self::getConfigFilePath();
                     if (file_exists($configFilePath)) {
-                        echo __('Path', self::TEXT_DOMAIN) . ' = ' . $configFilePath . PHP_EOL;
-                        echo __('Readable', self::TEXT_DOMAIN) . ' = ' . __(is_readable($configFilePath) ? 'yes' : 'no', self::TEXT_DOMAIN) . PHP_EOL;
-                        echo __('Writeable', self::TEXT_DOMAIN) . ' = ' . __(is_writeable($configFilePath) ? 'yes' : 'no', self::TEXT_DOMAIN) . PHP_EOL;
+                        echo __('Path', 'custom-php-settings') . ' = ' . $configFilePath . PHP_EOL;
+                        echo __('Readable', 'custom-php-settings') . ' = ' . __(is_readable($configFilePath) ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL;
+                        echo __('Writeable', 'custom-php-settings') . ' = ' . __(is_writeable($configFilePath) ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL;
                     }
                     echo PHP_EOL;
                     echo '=== Enabled Plugins ===' . PHP_EOL;
@@ -120,10 +120,10 @@ $theme = wp_get_theme();
                     echo '=== Theme ===' . PHP_EOL;
                     echo $theme['Name'] . ' ' . $theme['Version'] . PHP_EOL;
                     ?></textarea>
-                    <p class="description"><?php _e('If you need help, copy and paste the above information for faster support.', self::TEXT_DOMAIN); ?></p>
+                    <p class="description"><?php _e('If you need help, copy and paste the above information for faster support.', 'custom-php-settings'); ?></p>
                 </td>
             </tr>
         </table>
-        <button type="button" class="button" onclick="document.querySelector('textarea').select(); document.execCommand('copy');"><?php _e('Copy for support', self::TEXT_DOMAIN); ?></button>
+        <button type="button" class="button" onclick="document.querySelector('textarea').select(); document.execCommand('copy');"><?php _e('Copy for support', 'custom-php-settings'); ?></button>
     </form>
 </div>

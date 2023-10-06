@@ -9,7 +9,6 @@ class Backend extends Singleton
 {
     const VERSION = '1.4.7';
     const SETTINGS_NAME = 'custom_php_settings';
-    const TEXT_DOMAIN = 'custom-php-settings';
     const PARENT_MENU_SLUG = 'tools.php';
     const MENU_SLUG = 'custom-php-settings';
     const MARKER = 'CUSTOM PHP SETTINGS';
@@ -57,7 +56,7 @@ class Backend extends Singleton
      */
     protected function localize()
     {
-        load_plugin_textdomain(self::TEXT_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
+        load_plugin_textdomain('custom-php-settings', false, dirname(plugin_basename(__FILE__)) . '/languages');
     }
 
     /**
@@ -142,13 +141,13 @@ class Backend extends Singleton
     {
         check_ajax_referer('custom_php_settings_dismiss_notice');
         if (!current_user_can('administrator')) {
-            return wp_send_json_error(__('You are not allowed to perform this action.', self::TEXT_DOMAIN));
+            return wp_send_json_error(__('You are not allowed to perform this action.', 'custom-php-settings'));
         }
         if (!filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT)) {
-            return wp_send_json_error(__('No valid notification id supplied.', self::TEXT_DOMAIN));
+            return wp_send_json_error(__('No valid notification id supplied.', 'custom-php-settings'));
         }
         if (!$this->dismissNotice($_POST['id'])) {
-            return wp_send_json_error(__('Notification could not be found.', self::TEXT_DOMAIN));
+            return wp_send_json_error(__('Notification could not be found.', 'custom-php-settings'));
         }
         wp_send_json_success();
     }
@@ -179,21 +178,21 @@ class Backend extends Singleton
     public function addProNotice()
     {
         ?>
-        <h3><?php _e('PRO version', self::TEXT_DOMAIN); ?></h3>
-        <p><?php echo __('There is now a <b>Pro</b> version of this plugin with extended features such as:', self::TEXT_DOMAIN); ?></p>
+        <h3><?php _e('PRO version', 'custom-php-settings'); ?></h3>
+        <p><?php echo __('There is now a <b>Pro</b> version of this plugin with extended features such as:', 'custom-php-settings'); ?></p>
         <div>
             <ul>
-                <li><?php _e('Set environment variables in your .htaccess file.', self::TEXT_DOMAIN); ?></li>
-                <li><?php _e('Enable WP_DEBUG from configuration page.', self::TEXT_DOMAIN); ?></li>
-                <li><?php _e('Enable error reporting and specify path to log file.', self::TEXT_DOMAIN); ?></li>
-                <li><?php _e('Hints for most of the configurable PHP settings.', self::TEXT_DOMAIN); ?></li>
-                <li><?php _e('Backup your configuration file before applying any changes.', self::TEXT_DOMAIN); ?></li>
-                <li><?php _e('Create multiple configurations that can be used to easily switch between different settings.', self::TEXT_DOMAIN); ?></li>
-                <li><?php _e('Extended support.', self::TEXT_DOMAIN); ?></li>
+                <li><?php _e('Set environment variables in your .htaccess file.', 'custom-php-settings'); ?></li>
+                <li><?php _e('Enable WP_DEBUG from configuration page.', 'custom-php-settings'); ?></li>
+                <li><?php _e('Enable error reporting and specify path to log file.', 'custom-php-settings'); ?></li>
+                <li><?php _e('Hints for most of the configurable PHP settings.', 'custom-php-settings'); ?></li>
+                <li><?php _e('Backup your configuration file before applying any changes.', 'custom-php-settings'); ?></li>
+                <li><?php _e('Create multiple configurations that can be used to easily switch between different settings.', 'custom-php-settings'); ?></li>
+                <li><?php _e('Extended support.', 'custom-php-settings'); ?></li>
             </ul>
         </div>
-        <p><?php echo sprintf(__('The Pro version only costs 15 EUR, or you can buy me 3 beers at <a href="%s" target="_blank" rel="noopener noreferrer">%s</a>', self::TEXT_DOMAIN), 'https://www.buymeacoffee.com/cyclonecode', 'buymeacoffee'); ?>.</p>
-        <p><?php echo sprintf(__('To get more information about the Pro version, please send me an email at <a href="mailto:cyclonecode@gmail.com?subject=%s" target="_blank" rel="noopener noreferrer">cyclonecode@gmail.com</a>, you can also contact me at my <a href="%s" target="_blank" rel="noopener noreferrer">slack channel</a>.', self::TEXT_DOMAIN), 'Custom%20PHP%20Settings%20Pro', 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ'); ?></p>
+        <p><?php echo sprintf(__('The Pro version only costs 15 EUR, or you can buy me 3 beers at <a href="%s" target="_blank" rel="noopener noreferrer">%s</a>', 'custom-php-settings'), 'https://www.buymeacoffee.com/cyclonecode', 'buymeacoffee'); ?>.</p>
+        <p><?php echo sprintf(__('To get more information about the Pro version, please send me an email at <a href="mailto:cyclonecode@gmail.com?subject=%s" target="_blank" rel="noopener noreferrer">cyclonecode@gmail.com</a>, you can also contact me at my <a href="%s" target="_blank" rel="noopener noreferrer">slack channel</a>.', 'custom-php-settings'), 'Custom%20PHP%20Settings%20Pro', 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ'); ?></p>
         <p><?php echo __('In case you bought me a couple of beers =) do not forget to add your email address or other contact information, and I will send you instructions on how to get the Pro version.'); ?></p>
         <?php
     }
@@ -206,12 +205,12 @@ class Backend extends Singleton
         ?>
         <img src="<?php echo plugin_dir_url(__FILE__); ?>assets/buymeacoffee.png" alt="buymeacoffee" />
         <div style="position: relative; z-index: 1000">
-        <h3><?php _e('Thank you for using Custom PHP Settings!', self::TEXT_DOMAIN); ?></h3>
-        <p><?php echo sprintf(__('If you use and enjoy Custom PHP Settings, I would be really grateful if you could give it a positive review at <a href="%s" target="_blank">Wordpress.org</a>.', self::TEXT_DOMAIN), 'https://wordpress.org/support/plugin/custom-php-settings/reviews/?rate=5#new-post'); ?></p>
-        <p><?php _e('Doing this would help me keeping the plugin free and up to date.', self::TEXT_DOMAIN); ?></p>
-        <p><?php _e('If you are feeling generous and would like to support me, you can always buy me a coffee at:', self::TEXT_DOMAIN); ?> <a target="_blank" href="https://www.buymeacoffee.com/cyclonecode">https://www.buymeacoffee.com/cyclonecode</a></p>
-        <p><?php _e('Please make sure to leave your e-mail address, and I will make sure to add you to the supporter section in the readme =)', self::TEXT_DOMAIN); ?></p>
-        <p><?php _e('Thank you very much!', self::TEXT_DOMAIN); ?></p>
+        <h3><?php _e('Thank you for using Custom PHP Settings!', 'custom-php-settings'); ?></h3>
+        <p><?php echo sprintf(__('If you use and enjoy Custom PHP Settings, I would be really grateful if you could give it a positive review at <a href="%s" target="_blank">Wordpress.org</a>.', 'custom-php-settings'), 'https://wordpress.org/support/plugin/custom-php-settings/reviews/?rate=5#new-post'); ?></p>
+        <p><?php _e('Doing this would help me keeping the plugin free and up to date.', 'custom-php-settings'); ?></p>
+        <p><?php _e('If you are feeling generous and would like to support me, you can always buy me a coffee at:', 'custom-php-settings'); ?> <a target="_blank" href="https://www.buymeacoffee.com/cyclonecode">https://www.buymeacoffee.com/cyclonecode</a></p>
+        <p><?php _e('Please make sure to leave your e-mail address, and I will make sure to add you to the supporter section in the readme =)', 'custom-php-settings'); ?></p>
+        <p><?php _e('Thank you very much!', 'custom-php-settings'); ?></p>
         </div>
         <?php
     }
@@ -222,11 +221,11 @@ class Backend extends Singleton
     public function addSupportNotice()
     {
         ?>
-        <h3><?php _e('Do you have any feedback or need support?', self::TEXT_DOMAIN); ?></h3>
-        <p><?php echo sprintf(__('If you have any requests for improvement or just need some help. Do not hesitate to open a ticket in the <a href="%s" target="_blank">support section</a>.', self::TEXT_DOMAIN), 'https://wordpress.org/support/plugin/custom-php-settings/#new-topic-0'); ?></p>
-        <p><?php echo sprintf(__('I can also be reached by email at <a href="%s">%s</a>', self::TEXT_DOMAIN), 'mailto:cyclonecode.help@gmail.com?subject=Custom PHP Settings Support', 'cyclonecode.help@gmail.com'); ?></p>
-        <p><?php echo sprintf(__('There is also a slack channel that you can <a target="_blank" href="%s">join</a>.', self::TEXT_DOMAIN), 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ'); ?></p>
-        <p><?php _e('I hope you will have an awesome day!', self::TEXT_DOMAIN); ?></p>
+        <h3><?php _e('Do you have any feedback or need support?', 'custom-php-settings'); ?></h3>
+        <p><?php echo sprintf(__('If you have any requests for improvement or just need some help. Do not hesitate to open a ticket in the <a href="%s" target="_blank">support section</a>.', 'custom-php-settings'), 'https://wordpress.org/support/plugin/custom-php-settings/#new-topic-0'); ?></p>
+        <p><?php echo sprintf(__('I can also be reached by email at <a href="%s">%s</a>', 'custom-php-settings'), 'mailto:cyclonecode.help@gmail.com?subject=Custom PHP Settings Support', 'cyclonecode.help@gmail.com'); ?></p>
+        <p><?php echo sprintf(__('There is also a slack channel that you can <a target="_blank" href="%s">join</a>.', 'custom-php-settings'), 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ'); ?></p>
+        <p><?php _e('I hope you will have an awesome day!', 'custom-php-settings'); ?></p>
         <?php
     }
 
@@ -239,16 +238,16 @@ class Backend extends Singleton
             return;
         }
         $sectionText = array(
-                'general' =>  __('Editor', self::TEXT_DOMAIN),
-                'environment' => __('Environment variables', self::TEXT_DOMAIN),
-                'apache' => __('Apache Information', self::TEXT_DOMAIN),
-                'php-info' => __('PHP Information', self::TEXT_DOMAIN),
-                'extensions' => __('Loaded Extensions', self::TEXT_DOMAIN),
-                'settings' => __('Current PHP Settings', self::TEXT_DOMAIN),
-                'cookie-vars' => __('COOKIE Variables', self::TEXT_DOMAIN),
-                'server-vars' => __('SERVER Variables', self::TEXT_DOMAIN),
-                'env-vars' => __('ENV Variables', self::TEXT_DOMAIN),
-                'status' => __('Status', self::TEXT_DOMAIN),
+                'general' =>  __('Editor', 'custom-php-settings'),
+                'environment' => __('Environment variables', 'custom-php-settings'),
+                'apache' => __('Apache Information', 'custom-php-settings'),
+                'php-info' => __('PHP Information', 'custom-php-settings'),
+                'extensions' => __('Loaded Extensions', 'custom-php-settings'),
+                'settings' => __('Current PHP Settings', 'custom-php-settings'),
+                'cookie-vars' => __('COOKIE Variables', 'custom-php-settings'),
+                'server-vars' => __('SERVER Variables', 'custom-php-settings'),
+                'env-vars' => __('ENV Variables', 'custom-php-settings'),
+                'status' => __('Status', 'custom-php-settings'),
         );
         if ($this->currentTab === 'info' && !empty($this->currentSection)) {
             $title = ' | ' . $sectionText[$this->currentSection];
@@ -257,8 +256,8 @@ class Backend extends Singleton
         }
         ?>
         <div id="custom-php-settings-admin-header">
-            <span><img width="64" src="<?php echo plugin_dir_url(__FILE__); ?>assets/icon-128x128.png" alt="<?php _e('Custom PHP Settings', self::TEXT_DOMAIN); ?>" />
-                <h1><?php _e('Custom PHP Settings', self::TEXT_DOMAIN); ?><?php echo $title; ?></h1>
+            <span><img width="64" src="<?php echo plugin_dir_url(__FILE__); ?>assets/icon-128x128.png" alt="<?php _e('Custom PHP Settings', 'custom-php-settings'); ?>" />
+                <h1><?php _e('Custom PHP Settings', 'custom-php-settings'); ?><?php echo $title; ?></h1>
             </span>
         </div>
         <?php
@@ -275,7 +274,7 @@ class Backend extends Singleton
     public function addActionLinks($links, $file)
     {
         $settings_link = '<a href="' . admin_url(self::PARENT_MENU_SLUG . '?page=' . self::MENU_SLUG) . '">' .
-            __('Settings', self::TEXT_DOMAIN) .
+            __('Settings', 'custom-php-settings') .
             '</a>';
         if ($file === 'custom-php-settings/bootstrap.php') {
             array_unshift($links, $settings_link);
@@ -299,17 +298,17 @@ class Backend extends Singleton
         $plugin_meta[] = sprintf(
             '<a target="_blank" href="%1$s"><span class="dashicons dashicons-star-filled" aria-hidden="true" style="font-size:14px;line-height:1.3"></span>%2$s</a>',
             'https://www.buymeacoffee.com/cyclonecode',
-            esc_html_x('Sponsor', 'verb', self::TEXT_DOMAIN)
+            esc_html_x('Sponsor', 'verb', 'custom-php-settings')
         );
         $plugin_meta[] = sprintf(
             '<a target="_blank" href="%1$s"><span class="dashicons dashicons-thumbs-up" aria-hidden="true" style="font-size:14px;line-height:1.3"></span>%2$s</a>',
             'https://wordpress.org/support/plugin/custom-php-settings/reviews/?rate=5#new-post',
-            esc_html_x('Rate', 'verb', self::TEXT_DOMAIN)
+            esc_html_x('Rate', 'verb', 'custom-php-settings')
         );
         $plugin_meta[] = sprintf(
             '<a target="_blank" href="%1$s"><span class="dashicons dashicons-editor-help" aria-hidden="true" style="font-size:14px;line-height:1.3"></span>%2$s</a>',
             'https://wordpress.org/support/plugin/custom-php-settings/#new-topic-0',
-            esc_html_x('Support', 'verb', self::TEXT_DOMAIN)
+            esc_html_x('Support', 'verb', 'custom-php-settings')
         );
 
         return $plugin_meta;
@@ -502,7 +501,7 @@ class Backend extends Singleton
         $screen = get_current_screen();
         if ($screen->id === 'tools_page_custom-php-settings') {
             $rate_text = sprintf(
-                __('Thank you for using <a href="%1$s" target="_blank">Custom PHP Settings</a>! Please <a href="%2$s" target="_blank">rate us on WordPress.org</a>', self::TEXT_DOMAIN),
+                __('Thank you for using <a href="%1$s" target="_blank">Custom PHP Settings</a>! Please <a href="%2$s" target="_blank">rate us on WordPress.org</a>', 'custom-php-settings'),
                 'https://wordpress.org/plugins/custom-php-settings',
                 'https://wordpress.org/support/plugin/custom-php-settings/reviews/?rate=5#new-post'
             );
@@ -520,8 +519,8 @@ class Backend extends Singleton
     {
         add_submenu_page(
             self::PARENT_MENU_SLUG,
-            __('Custom PHP Settings', self::TEXT_DOMAIN),
-            __('Custom PHP Settings', self::TEXT_DOMAIN),
+            __('Custom PHP Settings', 'custom-php-settings'),
+            __('Custom PHP Settings', 'custom-php-settings'),
             $this->capability,
             self::MENU_SLUG,
             array($this, 'doSettingsPage')
@@ -677,12 +676,12 @@ class Backend extends Singleton
         $configFile = self::getConfigFilePath();
         if (self::createIfNotExist($configFile) === false) {
             /* translators: %s: Name of configuration file */
-            $this->addSettingsMessage(sprintf(__('%s does not exists or is not writable.', self::TEXT_DOMAIN), $configFile));
+            $this->addSettingsMessage(sprintf(__('%s does not exists or is not writable.', 'custom-php-settings'), $configFile));
             return;
         }
         $section = $this->getSettingsAsArray();
         /* translators: %s: Name of configuration file */
-        $message = sprintf(__('Settings updated and stored in %s.', self::TEXT_DOMAIN), $configFile);
+        $message = sprintf(__('Settings updated and stored in %s.', 'custom-php-settings'), $configFile);
         $this->addSettingsMessage($message, 'updated');
         self::addMarker($configFile, self::MARKER, $section, self::getCGIMode() ? ';' : '#');
     }
@@ -738,7 +737,7 @@ class Backend extends Singleton
                 return 2;
             } elseif (in_array($setting[0], $iniSettings)) {
                 /* translators: %s: Name of PHP setting */
-                $this->addSettingsMessage(sprintf(__('%s must be in the format: key=value', self::TEXT_DOMAIN), $setting[0]) . '<br />');
+                $this->addSettingsMessage(sprintf(__('%s must be in the format: key=value', 'custom-php-settings'), $setting[0]) . '<br />');
                 return -2;
             }
         } elseif (count($setting) === 2) {
@@ -751,7 +750,7 @@ class Backend extends Singleton
             }
         }
         /* translators: %s: Name of PHP setting */
-        $this->addSettingsMessage(sprintf(__('%s is not a valid setting.', self::TEXT_DOMAIN), $setting[0]) . '<br />');
+        $this->addSettingsMessage(sprintf(__('%s is not a valid setting.', 'custom-php-settings'), $setting[0]) . '<br />');
         return -1;
     }
 
@@ -765,7 +764,7 @@ class Backend extends Singleton
 
         // Validate so user has correct privileges.
         if (!current_user_can($this->capability)) {
-            die(__('You are not allowed to perform this action.', self::TEXT_DOMAIN));
+            die(__('You are not allowed to perform this action.', 'custom-php-settings'));
         }
 
         // Check if settings form is submitted.

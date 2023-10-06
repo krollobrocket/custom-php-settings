@@ -13,8 +13,8 @@ foreach ($extensions as $key => $extension) {
     <?php require_once('cps-tabs.php'); ?>
     <table class="custom-php-settings-table widefat">
         <thead>
-            <th><?php echo __('Extension', self::TEXT_DOMAIN); ?></th>
-            <th><?php echo __('Version', self::TEXT_DOMAIN); ?></th>
+            <th><?php echo __('Extension', 'custom-php-settings'); ?></th>
+            <th><?php echo __('Version', 'custom-php-settings'); ?></th>
         </thead>
         <?php foreach ($extensions as $key => $extension) : ?>
         <tr>

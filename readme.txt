@@ -156,8 +156,5 @@ Fixes a bug where the plugin could not be deleted.
 
 == Changelog ==
 
-= 1.4.7
-- Add support to search for settings.
-- Add support to only show customized settings.
-- Use filter FILTER_UNSAFE_RAW instead of FILTER_SANITIZE_STRING.
-- Fix bug on status page where duplicate plugins was shown as enabled/disabled.
+= 1.5.x
+- Use string for text domain.
