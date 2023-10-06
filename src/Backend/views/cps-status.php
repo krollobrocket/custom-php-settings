@@ -79,7 +79,7 @@ $theme = wp_get_theme();
         <table class="form-table">
             <tr>
                 <td>
-                    <textarea name="settings" readonly><?php
+                    <div id="status"><?php
                     echo '=== Plugin Settings ===' . PHP_EOL;
                     foreach ($pluginSettings as $key => $value) :
                         echo $key . ($key[0] === '=' ? '' : ' = ' . $value) . PHP_EOL;
@@ -119,11 +119,11 @@ $theme = wp_get_theme();
                     echo PHP_EOL;
                     echo '=== Theme ===' . PHP_EOL;
                     echo $theme['Name'] . ' ' . $theme['Version'] . PHP_EOL;
-                    ?></textarea>
+                    ?></div>
                     <p class="description"><?php _e('If you need help, copy and paste the above information for faster support.', 'custom-php-settings'); ?></p>
                 </td>
             </tr>
         </table>
-        <button type="button" class="button" onclick="document.querySelector('textarea').select(); document.execCommand('copy');"><?php _e('Copy for support', 'custom-php-settings'); ?></button>
+        <button type="button" class="button" onclick="jQuery().copyToClipboard(jQuery('#status').text())"><?php _e('Copy for support', 'custom-php-settings'); ?></button>
     </form>
 </div>

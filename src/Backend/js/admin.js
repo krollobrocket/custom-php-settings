@@ -2,7 +2,8 @@
     $(document).ready(() => {
         // Handle searching in settings table.
         $.fn.copyToClipboard = (text) => {
-            const $temp = $('<input>')
+            text = text.replace(/\n/g, "\r\n");
+            const $temp = $('<textarea>')
             $('body').append($temp)
             $temp.val(text).select()
             document.execCommand('copy')
