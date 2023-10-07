@@ -375,7 +375,13 @@ class Backend extends Singleton
     {
         if (version_compare($this->settings->get('version'), self::VERSION, '<')) {
             $defaults = array(
-                'php_settings' => array(),
+                'settings' => array(
+                    array(
+                        'name' => __('Default', 'custom-php-settings'),
+                        'php' => array(),
+                        'environment' => array(),
+                    ),
+                ),
                 'update_config' => false,
                 'restore_config' => true,
                 'trim_comments' => true,
@@ -424,6 +430,17 @@ class Backend extends Singleton
                 }
             }
             $this->settings->set('notes', $defaults['notes']);
+            // Update to new settings format.
+            if ($this->settings->get('version') < '1.5.0') {
+                $currentSettings = array(
+                    array(
+                        'name' => __('Default', 'custom-php-settings'),
+                        'php' => $this->settings->get('php_settings', array()),
+                        'environment' => array(),
+                    ),
+                );
+                $this->settings->set('settings', $currentSettings);
+            }
             // Set defaults.
             foreach ($defaults as $key => $value) {
                 $this->settings->add($key, $value);
@@ -573,7 +590,8 @@ class Backend extends Singleton
     {
         $cgiMode = $this->getCGIMode();
         $section = array();
-        foreach ($this->settings->php_settings as $key => $value) {
+        $settingIndex = $this->settings->get('settingIndex', 0);
+        foreach ($this->settings->settings[$settingIndex]['php'] as $key => $value) {
             if (empty($value)) {
                 if (!$this->settings->get('trim_whitespaces')) {
                     $section[] = '';
@@ -782,9 +800,10 @@ class Backend extends Singleton
         if (filter_input(INPUT_POST, 'custom-php-settings', FILTER_UNSAFE_RAW)) {
             // Filter and sanitize form values.
             $settings = array();
+            $settingIndex = $this->settings->get('settingIndex', 0);
             $raw_settings = filter_input(
                 INPUT_POST,
-                'php_settings',
+                'settings',
                 FILTER_UNSAFE_RAW
             );
             $raw_settings = array_map('trim', explode(PHP_EOL, trim($raw_settings)));
@@ -799,7 +818,9 @@ class Backend extends Singleton
                     }
                 }
             }
-            $this->settings->set('php_settings', $settings);
+            $currentSettings = $this->settings->get('settings');
+            $currentSettings[$settingIndex]['php'] = $settings;
+            $this->settings->set('settings', $currentSettings);
             $this->settings->set('update_config', filter_input(
                 INPUT_POST,
                 'update_config',

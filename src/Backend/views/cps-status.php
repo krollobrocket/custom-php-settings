@@ -9,10 +9,13 @@ $pluginSettings = array(
     __('Remove whitespaces', 'custom-php-settings') => __($settings['trim_whitespaces'] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL,
     __('=== Custom PHP Settings ===', 'custom-php-settings') => '',
 );
-foreach ($settings['php_settings'] as $value) {
-    if (!empty($value)) {
-        $setting = explode('=', $value);
-        $pluginSettings[$setting[0]] = isset($setting[1]) ? $setting[1] : '';
+foreach ($settings['settings'] as $php_setting) {
+    $pluginSettings['<b>' . $php_setting['name'] . '</b>'] = '';
+    foreach ($php_setting['php'] as $value) {
+        if (!empty($value)) {
+            $setting = explode('=', $value);
+            $pluginSettings['&#9;' . $setting[0]] = isset($setting[1]) ? $setting[1] : '';
+        }
     }
 }
 
@@ -82,7 +85,11 @@ $theme = wp_get_theme();
                     <div id="status"><?php
                     echo '=== Plugin Settings ===' . PHP_EOL;
                     foreach ($pluginSettings as $key => $value) :
-                        echo $key . ($key[0] === '=' ? '' : ' = ' . $value) . PHP_EOL;
+                        if ($value === '') {
+                            echo $key . PHP_EOL;
+                        } else {
+                            echo $key . ($key[0] === '=' ? '' : ' = ' . $value) . PHP_EOL;
+                        }
                     endforeach;
                     echo PHP_EOL;
                     echo '=== PHP ===' . PHP_EOL;

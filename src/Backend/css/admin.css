@@ -53,14 +53,12 @@
     border:1px solid #c0c0c0;
     overflow-y: scroll;
     white-space: pre;
+    tab-size: 4;
     font-family: monospace;
     width: 94%;
     margin: 0;
     height: 300px;
     padding: 20px;
-    border-radius: 0;
-    resize: none;
     font-size: 12px;
     line-height: 20px;
-    outline: 0;
 }

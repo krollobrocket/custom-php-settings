@@ -1,8 +1,9 @@
 <?php
 $settings = '';
-$php_settings = $this->settings->get('php_settings');
-if (isset($php_settings)) {
-    foreach ($php_settings as $key => $value) {
+$php_settings = $this->settings->get('settings', array());
+$settingIndex = $this->settings->get('settingIndex', 0);
+if (isset($php_settings[$settingIndex]['php'])) {
+    foreach ($php_settings[$settingIndex]['php'] as $key => $value) {
         $settings .= $value . PHP_EOL;
     }
 }
@@ -20,7 +21,7 @@ if (isset($php_settings)) {
                     <fieldset>
                         <textarea id="code_editor_custom_php_settings"
                                   rows="5"
-                                  name="php_settings"
+                                  name="settings"
                                   class="widefat textarea"><?php echo $settings; ?></textarea>
                     </fieldset>
                     <p class="description"><?php echo __('Custom PHP Settings. Each setting should be in the form key=value.', 'custom-php-settings'); ?></p>

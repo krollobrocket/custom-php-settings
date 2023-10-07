@@ -160,3 +160,4 @@ Fixes a bug where the plugin could not be deleted.
 - Use string for text domain.
 - Stripe all tables and sort entries.
 - Use div element instead of textarea on status page.
+- Add support for multiple settings.
