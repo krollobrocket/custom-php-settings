@@ -60,7 +60,7 @@
                     type: 'POST',
                     data: {
                         action: 'custom_php_settings_dismiss_notice',
-                        _ajax_nonce: data._nonce,
+                        _ajax_nonce: cps_params._ajax_nonce,
                         id: $(el).attr('id').split('-')[1],
                     },
                 })

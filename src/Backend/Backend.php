@@ -12,6 +12,7 @@ class Backend extends Singleton
     const PARENT_MENU_SLUG = 'tools.php';
     const MENU_SLUG = 'custom-php-settings';
     const MARKER = 'CUSTOM PHP SETTINGS';
+    const CPS_NONCE = 'custom_php_settings';
 
     /**
      *
@@ -150,7 +151,7 @@ class Backend extends Singleton
      */
     public function doDismissNotice()
     {
-        check_ajax_referer('custom_php_settings_dismiss_notice');
+        check_ajax_referer(self::CPS_NONCE);
         if (!current_user_can('administrator')) {
             return wp_send_json_error(__('You are not allowed to perform this action.', 'custom-php-settings'));
         }
@@ -357,8 +358,8 @@ class Backend extends Singleton
             self::VERSION,
             true
         );
-        wp_localize_script('custom-php-settings', 'data', array(
-            '_nonce' => wp_create_nonce('custom_php_settings_dismiss_notice'),
+        wp_localize_script('custom-php-settings', 'cps_params', array(
+            '_ajax_nonce' => wp_create_nonce(self::CPS_NONCE),
         ));
         wp_enqueue_style(
             'custom-php-settings',
