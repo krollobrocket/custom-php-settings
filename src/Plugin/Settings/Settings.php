@@ -316,6 +316,29 @@ class Settings implements \IteratorAggregate, \Countable, \ArrayAccess
     }
 
     /**
+     * Load configuration from file.
+     *
+     * @param string $filename
+     * @param string $format
+     * @return void
+     */
+    public function loadFromFile($filename, $format = 'json')
+    {
+        $content = @file_get_contents($filename);
+        switch ($format) {
+            case 'raw':
+                $this->settings = unserialize($content);
+                break;
+            case 'json':
+                $this->settings = \json_decode($content, true);
+                break;
+            case 'yaml':
+                $this->settings = \yaml_parse($content);
+                break;
+        }
+    }
+
+    /**
      * Removes any settings that is not defined in $options.
      *
      * @param array $options

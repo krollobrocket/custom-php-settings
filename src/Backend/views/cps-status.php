@@ -1,23 +1,6 @@
 <?php
 // Get plugin information.
-$settings = $this->settings->toOptionsArray();
-$pluginSettings = array(
-    __('Version', 'custom-php-settings') => $settings['version'],
-    __('Update configuration file', 'custom-php-settings') => __($settings['update_config'] ? 'yes' : 'no', 'custom-php-settings'),
-    __('Restore configuration file', 'custom-php-settings') => __($settings['restore_config'] ? 'yes' : 'no', 'custom-php-settings'),
-    __('Remove comments', 'custom-php-settings') => __($settings['trim_comments'] ? 'yes' : 'no', 'custom-php-settings'),
-    __('Remove whitespaces', 'custom-php-settings') => __($settings['trim_whitespaces'] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL,
-    __('=== Custom PHP Settings ===', 'custom-php-settings') => '',
-);
-foreach ($settings['settings'] as $php_setting) {
-    $pluginSettings['<b>' . $php_setting['name'] . '</b>'] = '';
-    foreach ($php_setting['php'] as $value) {
-        if (!empty($value)) {
-            $setting = explode('=', $value);
-            $pluginSettings['&#9;' . $setting[0]] = isset($setting[1]) ? $setting[1] : '';
-        }
-    }
-}
+$settings = $this->settings->get(self::FIELD_SETTINGS);
 
 // Get PHP information.
 $phpInfo = array(
@@ -52,16 +35,8 @@ $phpInfo = array(
     __('register_globals', 'custom-php-settings') => ini_get('register_globals'),
 );
 
-// Get Wordpress information.
-$wpInfo = array(
-    __('Version', 'custom-php-settings') => get_bloginfo('version'),
-    __('Multisite', 'custom-php-settings') => __(is_multisite() ? 'yes' : 'no', 'custom-php-settings'),
-    __('Site address', 'custom-php-settings') => get_bloginfo('url'),
-    __('Debug mode', 'custom-php-settings') => __(WP_DEBUG ? 'yes' : 'no', 'custom-php-settings'),
-    __('Memory limit', 'custom-php-settings') => WP_MEMORY_LIMIT,
-    __('Cron', 'custom-php-settings') => __(defined('DISABLE_WP_CRON') && DISABLE_WP_CRON ? 'no' : 'yes', 'custom-php-settings'),
-    __('Language', 'custom-php-settings') => get_locale(),
-);
+// Get WordPress information.
+$wpInfo = $this->getWordPressInfo();
 
 // Get plugin information.
 $plugins = get_plugins();
@@ -84,20 +59,39 @@ $theme = wp_get_theme();
                 <td>
                     <div id="status"><?php
                     echo '=== Plugin Settings ===' . PHP_EOL;
-                    foreach ($pluginSettings as $key => $value) :
-                        if ($value === '') {
-                            echo $key . PHP_EOL;
-                        } else {
-                            echo $key . ($key[0] === '=' ? '' : ' = ' . $value) . PHP_EOL;
+                    echo __('Version', 'custom-php-settings') . ' = ' . $this->settings->get(self::FIELD_VERSION) . PHP_EOL . PHP_EOL;
+                    foreach ($settings as $php_setting) {
+                        $php_setting['php'] = array_filter($php_setting[self::FIELD_PHP], function ($s) {
+                            return $s && $s[0] !== '#';
+                        });
+                        echo '<b>' . $php_setting['name'] . '</b>' . PHP_EOL;
+                        echo __('Update configuration file', 'custom-php-settings') . ' ' . __($php_setting[self::FIELD_UPDATE_CONFIG] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL;
+                        echo __('Restore configuration file', 'custom-php-settings') . ' ' . __($php_setting[self::FIELD_RESTORE_CONFIG] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL;
+                        echo __('Remove comments', 'custom-php-settings') . ' ' . __($php_setting[self::FIELD_TRIM_COMMENTS] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL;
+                        echo __('Remove whitespaces', 'custom-php-settings') . ' ' . __($php_setting[self::FIELD_TRIM_WHITESPACES] ? 'yes' : 'no', 'custom-php-settings') . PHP_EOL . PHP_EOL;
+                        foreach ($php_setting['php'] as $value) {
+                            if (!empty($value)) {
+                                echo $value . PHP_EOL;
+                            }
                         }
-                    endforeach;
-                    echo PHP_EOL;
+                        if ($php_setting[self::FIELD_PHP]) {
+                            echo PHP_EOL;
+                        }
+                        foreach ($php_setting[self::FIELD_ENV] as $variable) {
+                            $name = key($variable);
+                            echo $name . ($variable[$name] ? ' = ' . $variable[$name] : '') . PHP_EOL;
+                        }
+                        if ($php_setting[self::FIELD_ENV]) {
+                            echo PHP_EOL;
+                        }
+                    }
+
                     echo '=== PHP ===' . PHP_EOL;
                     foreach ($phpInfo as $key => $value) :
                         echo $key . ($key[0] === '=' ? '' : ' = ' . $value) . PHP_EOL;
                     endforeach;
                     echo PHP_EOL;
-                    echo '=== Wordpress ===' . PHP_EOL;
+                    echo '=== WordPress ===' . PHP_EOL;
                     foreach ($wpInfo as $key => $value) :
                         echo $key . ' = ' . $value . PHP_EOL;
                     endforeach;

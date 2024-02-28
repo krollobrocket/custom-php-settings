@@ -1,11 +1,11 @@
 === Custom PHP Settings ===
-Contributors: cyclonecode
+Contributors: cyclonecode, freemius
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 3.1.0
-Tested up to: 6.3
+Tested up to: 6.4.3
 Requires PHP: 5.6
-Stable tag: 1.4.7
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,41 +13,11 @@ This plugin makes it possible to override php settings.
 
 == Description ==
 
-This plugin can be used to customize php settings for you Wordpress installation.
+This plugin can be used to customize php settings for you wordpress installation.
 
 The plugin will modify either the **.htaccess** file or **.user.ini** file in order to change the current php settings directly from within the settings page.
 
 Since the configuration file needs to be modified this file **must** be writable for this plugin to work as expected.
-
-= Looking for help =
-
-I am currently in the search for someone who would like to help me with something of the following:
-
-- Create a dashboard icon which can be used in the admin menu.
-- Create a banner that would be displayed on the plugins homepage at wordpress.org.
-- Design a nicer and more intuitive admin interface.
-- Create a solid looking icon that can be used on multiple places.
-
-If you would like to help with anything of the above, please do not hesitate and contact me either on slack or by email.
-
-= Pro version =
-
-The pro version comes with extended features such as:
-
-- Support to set environment variables in your .htaccess file.
-- Support to enable/disable WP_DEBUG from the configuration page.
-- Enable error logging and set path to log file.
-- Hints for most of the configurable PHP settings.
-- Support to backup your configuration file before applying any changes.
-- Create multiple configurations that can be used to easily switch between different settings.
-- Extended support.
-
-You can get the premium version for only 15 EUR, or by buying me a couple of beers at [buymeacoffee](https://www.buymeacoffee.com/cyclonecode).
-Do not forget to add your email address or other contact information, and I will send you a reply with instructions on how to get the premium version.
-
-The Pro license is valid for a year and can be used on up to three sites.
-
-Please contact me by e-mail at cyclonecode@gmail.com for further instructions on how to get the pro version.
 
 = Apache module =
 
@@ -61,7 +31,7 @@ You can check the name of you custom INI file in the **PHP Information** table. 
 Notice that there is also a **User INI file cache TTL** value in the information table, this value tells how long the custom INI file will be cached before it gets reloaded.
 For instance, if this value is set to 300 then any changes to your custom INI file will not be reflected for up to 5 minutes. The name for this setting in the php configuration is **user_ini.cache_ttl**.
 
-On important thing is to make sure that your `.user.ini` file is blocked by your webserver. If you are running NGINX this can be done by adding:
+One important thing is to make sure that your `.user.ini` file is blocked by your webserver. If you are running NGINX this can be done by adding:
 
 `
 location ~ /\.user\.ini {
@@ -82,10 +52,20 @@ deny from all
 
 The settings table will display all non-system php settings that can be customized by the plugin. All modified settings will be displayed in red in this table.
 
-Some settings might be displayed in red because they are changed somewhere else, perhaps through a customized php.ini file, by Wordpress itself, a plugin or in some other way.
+Some settings might be displayed in red because they are changed somewhere else, perhaps through a customized php.ini file, by wordpress itself, a plugin or in some other way.
 For instance if you have enabled **WP_DEBUG** in your **wp-config.php** file the **error_reporting** setting will turn red.
 
 If you have questions or perhaps some idea on things that should be added you can also try [slack](https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ).
+
+= Multiple Configurations =
+
+The premium version adds support for creating multiple named configurations which all can hold their own custom PHP settings.
+You will then be able to easily switch between the different configurations entries applying them to you configuration file.
+
+= Environment Variables =
+
+In the premium version, when running PHP as an apache module and using an **.htaccess** file for configuration, you are able
+to add custom environment variables. These will be accessible by using the super global **$_SERVER** array.
 
 = Resources =
 
@@ -107,9 +87,9 @@ Another example is setting the **post_max_size** to a very low value so that no 
 If you by mistake changed some value and your site is now inaccessible you could simply manually remove everything from between the plugin markers in your **.htaccess** file:
 
 `
-# BEGIN CUSTOM PHP SETTINGS
+# BEGIN CUSTOM PHP SETTINGS PRO
 php_value variables_order EPCS  <-- Remove
-# END CUSTOM PHP SETTINGS
+# END CUSTOM PHP SETTINGS PRO
 `
 
 == Frequently Asked Questions ==
@@ -126,27 +106,15 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Installation ==
 
-1. Upload custom-php-settings to the **/wp-content/plugins/** directory,
+1. Upload custom-php-settings-pro to the **/wp-content/plugins/** directory,
 2. Activate the plugin through the **Plugins** menu in WordPress.
-3. You can now modify your php settings by going to the settings page located under *wp-admin/tools.php?page=custom-php-settings*.
+3. You can now modify your php settings by going to the settings page located under *wp-admin/admin.php?page=custom-php-settings-pro*.
 
 == Upgrade Notice ==
 
-= 1.1.0 =
-Check Server API and do **not** make any changes if using CGI/Fast-CGI.
-
-= 1.2.6 =
-Fixes a bug where the plugin could not be deleted.
-
-= 1.4.3
-- Fixes a bug on status page when no custom settings has been added.
-
-= 1.4.6
-- Fixes a bug on status page where some plugins where displayed multiple times.
-
 == Screenshots ==
 
-1. Customize PHP settings from within Wordpress administration.
+1. Customize PHP settings from within wordpress administration.
 2. A `.htaccess` file with customized PHP settings.
 3. A table with all php settings that can be customized.
 4. Table displaying information about the current php environment.
@@ -156,8 +124,15 @@ Fixes a bug where the plugin could not be deleted.
 
 == Changelog ==
 
-= 1.5.x
-- Use string for text domain.
-- Stripe all tables and sort entries.
-- Use div element instead of textarea on status page.
-- Add support for multiple settings.
+= 2.0.0
+
+- Add: DI container.
+- Add: Display database information.
+- Add: Display WordPress information.
+- Add: Support for multiple settings.
+- Add: Support for setting environment variables.
+- Add: Extended GD information.
+- Add: Support for backing up configuration file.
+- Add: Support for restoring configuration file from backup.
+- Add: Display database variables.
+- Add: Support to load configuration from disk.

@@ -16,15 +16,19 @@
 .custom-php-settings-table {
     border: 1px solid #e5e5e5;
     background-color: #fff;
+    /*max-width: 100%;
+    overflow-x: scroll;
+    display: block;*/
 }
-.custom-php-settings-table tr.striped {
-    background-color: #f0f0f0;
+.custom-php-settings-table tbody tr:nth-child(odd) td {
+    background-color: #f0f0f0
 }
 .custom-php-settings-table tr.modified td {
     color: #ff0000;
 }
 .custom-php-settings-table td {
     width: 33%;
+    word-wrap: break-word;
 }
 .custom-php-settings-table td:nth-child(4) span {
     cursor: pointer;
@@ -62,3 +66,73 @@
     font-size: 12px;
     line-height: 20px;
 }
+#settings-buttons p.submit {
+    display: inline-block;
+}
+/* Premium box */
+.custom-php-settings-table .button.inline {
+    width: 70px;
+}
+.cps-column {
+    float: left;
+    width: 50%;
+    margin-right: 20px;
+}
+#cps-premium-info {
+    width: 20%;
+    margin-top: 20px;
+}
+#cps-upgrade-box {
+    padding: 20px;
+}
+#cps-upgrade-box h3 {
+    color: #fff;
+    background-color: #000;
+    margin: 0;
+    padding: 1rem;
+}
+#cps-features {
+    list-style-type: square;
+    padding-left: 10px;
+}
+#cps-upgrade .cps-upgrade-button {
+    background: #000;
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+#cps-upgrade .cps-upgrade-button:hover {
+    background: #303030;
+}
+#cps-wrap .postbox .inside {
+    padding-bottom: 0;
+}
+/* End Premium box */
+/* Backups */
+.cps-backups tr.no-backups {
+    display: none;
+}
+.cps-backups td:first-child {
+    text-align: left;
+    /* white-space: pre; */
+}
+.cps-backups td:last-child {
+    text-align: right;
+}
+.cps-backups .remove-backup {
+    margin: 0 10px;
+}
+/* end Backups */
+/* admin menu */
+.dashicons-cogwheel {
+    background-image: url("../assets/cogwheel.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+    opacity: .6;
+}
+li.wp-menu-open .dashicons-cogwheel,
+a.menu-top:hover .dashicons-cogwheel {
+    opacity: 1;
+}
+/* end admin menu */

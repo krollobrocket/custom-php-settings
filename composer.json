@@ -1,7 +1,6 @@
 {
     "name": "cyclonecode/custom-php-settings",
     "type": "wordpress-plugin",
-    "version": "1.4.7",
     "keywords": [
         "wordpress",
         "plugin",
@@ -16,13 +15,12 @@
     ],
     "description": "Customize php settings for you wordpress installation.",
     "require": {
-        "php": ">=5.6",
-        "composer/installers": "^2.1"
+        "php": ">=5.6"
     },
     "require-dev": {
+        "composer/installers": "^1.1",
         "squizlabs/php_codesniffer": "^3.7"
     },
-    "time": "2022-07-02",
     "license": "GPL-2.0-or-later",
     "readme": "readme.txt",
     "homepage": "https://wordpress.org/plugins/custom-php-settings/",
@@ -45,11 +43,31 @@
         "psr-4": {
             "CustomPhpSettings\\": [
                 "src/"
+            ],
+            "CustomPhpSettings\\Psr\\Container\\": [
+                "src/Vendor/psr/container/src/"
+            ],
+            "CustomPhpSettings\\Interop\\Container\\": [
+                "src/Vendor/container-interop/container-interop/src/Interop/Container/"
+            ],
+            "CustomPhpSettings\\Invoker\\": [
+                "src/Vendor/php-di/invoker/src/"
+            ],
+            "CustomPhpSettings\\PhpDocReader\\": [
+                "src/Vendor/php-di/phpdoc-reader/src/PhpDocReader/"
+            ],
+            "CustomPhpSettings\\DI\\": [
+                "src/Vendor/php-di/php-di/src/DI/"
             ]
         }
     },
     "minimum-stability": "stable",
     "config": {
+        "optimize-autoloader": true,
+        "classmap-authoritative": true,
+        "preferred-install": "dist",
+        "prepend-autoloader": false,
+        "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true
         }

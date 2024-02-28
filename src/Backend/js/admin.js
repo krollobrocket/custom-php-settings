@@ -1,8 +1,30 @@
 (($) => {
     $(document).ready(() => {
+        function setupEditor(id) {
+            if (wp.codeEditor) {
+                $('.CodeMirror').remove()
+                const editor = $(id)
+                if (editor.length) {
+                    let editorSettings = wp.codeEditor.defaultSettings ? _.clone(wp.codeEditor.defaultSettings) : {}
+                    editorSettings.codemirror = _.extend(
+                        {},
+                        editorSettings.codemirror,
+                        {
+                            indentUnit: 2,
+                            tabSize: 2,
+                            mode: 'shell',
+                            readOnly: !!$(editor).prop('readonly'),
+                        }
+                    )
+                    wp.codeEditor.initialize(editor, editorSettings)
+                }
+            }
+        }
+        setupEditor('#code_editor_custom_php_settings')
+        
         // Handle searching in settings table.
         $.fn.copyToClipboard = (text) => {
-            text = text.replace(/\n/g, "\r\n");
+            text = text.replace(/\n/g, "\r\n")
             const $temp = $('<textarea>')
             $('body').append($temp)
             $temp.val(text).select()
@@ -13,30 +35,35 @@
             const tds = $(this).parents('tr').find('td')
             const cp = tds[0].innerHTML + '=' + tds[1].innerHTML
             $().copyToClipboard(cp)
-            $(this).parents('tr').effect('pulsate', { times: 1 }, 1000);
+            $(this).parents('tr').effect('pulsate', { times: 1 }, 1000)
         })
-        $.fn.restripe = () => {
-            $('.custom-php-settings-table tr:visible').each(function (index) {
-                $(this).toggleClass('striped', !!(index & 1))
-            })
-        }
         $('#cbkModified').on('change', function (e) {
             if (this.checked) {
                 $('input[name="search"]').val('')
-                $('.custom-php-settings-table tr:not(:first)').hide()
-                $('.custom-php-settings-table tr.modified').show()
+                $('.custom-php-settings-table tbody tr').addClass('hidden')
+                $('.custom-php-settings-table tr.modified').removeClass('hidden')
             } else {
-                $('.custom-php-settings-table tr:not(:first)').show()
+                $('.custom-php-settings-table tbody tr').removeClass('hidden')
             }
-            $().restripe()
+            $('.custom-php-settings-table tbody tr:not(.hidden):odd td').css({
+                'background-color': '#f0f0f0',
+            })
+            $('.custom-php-settings-table tbody tr:not(.hidden):even td').css({
+                'background-color': '#fff',
+            })
         })
         $('input[name="search"]').on('keyup', function (e) {
             $('#cbkModified').prop('checked', '')
             if (e.keyCode === 13) {
                 const s = this.value.toLowerCase()
-                $('.custom-php-settings-table tr').show()
+                $('.custom-php-settings-table tbody tr').removeClass('hidden')
                 if (!s.length) {
-                    $().restripe()
+                    $('.custom-php-settings-table tbody tr:not(.hidden):odd td').css({
+                        'background-color': '#f0f0f0',
+                    })
+                    $('.custom-php-settings-table tbody tr:not(.hidden):even td').css({
+                        'background-color': '#fff',
+                    })
                     return
                 }
                 const trs = $('.custom-php-settings-table tr:not(:first)')
@@ -45,11 +72,16 @@
                     let found = $(td).text().toLowerCase().includes(s)
                     if (!found) {
                         $('.custom-php-settings-table td')
-                        $(v).hide()
+                        $(v).addClass('hidden')
                     }
                     return found
                 })
-                $().restripe()
+                $('.custom-php-settings-table tbody tr:not(.hidden):odd td').css({
+                    'background-color': '#f0f0f0',
+                })
+                $('.custom-php-settings-table tbody tr:not(.hidden):even td').css({
+                    'background-color': '#fff',
+                })
             }
         })
         // Handle dismissible notifications.
@@ -64,23 +96,14 @@
                         id: $(el).attr('id').split('-')[1],
                     },
                 })
-                    .done(() => {
-                        if (data.debug) {
-                            console.log('success');
-                        }
-                        el.remove();
+                    .done((e) => {
+                        el.remove()
                     })
-                    .fail(() => {
-                        if (data.debug) {
-                            console.log('error');
-                        }
+                    .fail((e) => {
                     })
-                    .always(() => {
-                        if (data.debug) {
-                            console.log('complete');
-                        }
-                    });
-            });
-        });
-    });
-})(jQuery);
+                    .always((e) => {
+                    })
+            })
+        })
+    })
+})(jQuery)
