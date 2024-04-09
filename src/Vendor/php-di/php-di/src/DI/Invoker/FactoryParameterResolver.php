@@ -40,19 +40,19 @@ class FactoryParameterResolver implements ParameterResolver
         }
 
         foreach ($parameters as $index => $parameter) {
-            $parameterClass = @$parameter->getClass();
+            $parameterClass = @$parameter->getType();
 
             if (!$parameterClass) {
                 continue;
             }
 
-            if ($parameterClass->name === 'Interop\Container\ContainerInterface') {
+            if ($parameterClass->getName() === 'Interop\Container\ContainerInterface') {
                 $resolvedParameters[$index] = $this->container;
-            } elseif ($parameterClass->name === 'DI\Factory\RequestedEntry') {
+            } elseif ($parameterClass->getName() === 'DI\Factory\RequestedEntry') {
                 // By convention the second parameter is the definition
                 $resolvedParameters[$index] = $providedParameters[1];
-            } elseif ($this->container->has($parameterClass->name)) {
-                $resolvedParameters[$index] = $this->container->get($parameterClass->name);
+            } elseif ($this->container->has($parameterClass->getName())) {
+                $resolvedParameters[$index] = $this->container->get($parameterClass->getName());
             }
         }
 
