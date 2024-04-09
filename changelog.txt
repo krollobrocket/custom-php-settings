@@ -1,3 +1,16 @@
+= 2.0.0
+
+- Add: DI container.
+- Add: Display database information.
+- Add: Display WordPress information.
+- Add: Support for multiple settings.
+- Add: Support for setting environment variables.
+- Add: Extended GD information.
+- Add: Support for backing up configuration file.
+- Add: Support for restoring configuration file from backup.
+- Add: Display database variables.
+- Add: Support to load configuration from disk.
+
 = 1.4.7
 - Add support to search for settings.
 - Add support to only show customized settings.

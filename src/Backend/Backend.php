@@ -7,7 +7,7 @@ use  CustomPhpSettings\DI\Container ;
 use function  CustomPhpSettings\cps_fs ;
 class Backend
 {
-    const  VERSION = '2.0.0' ;
+    const  VERSION = '2.1.0' ;
     const  SETTINGS_NAME = 'custom_php_settings' ;
     const  MENU_SLUG = 'custom-php-settings' ;
     const  MARKER = 'CUSTOM PHP SETTINGS' ;
@@ -264,7 +264,7 @@ class Backend
         echo  sprintf( __( 'If you have any requests for improvement or just need some help. Do not hesitate to open a ticket in the <a href="%s" target="_blank">support section</a>.', 'custom-php-settings' ), 'https://wordpress.org/support/plugin/custom-php-settings/#new-topic-0' ) ;
         ?></p>
         <p><?php 
-        echo  sprintf( __( 'I can also be reached by email at <a href="%s">%s</a>', 'custom-php-settings' ), 'mailto:cyclonecode.help@gmail.com?subject=Custom PHP Settings Support', 'cyclonecode.help@gmail.com' ) ;
+        echo  sprintf( __( 'I can also be reached by email at <a href="%s">%s</a>', 'custom-php-settings' ), 'mailto:customphpsettings@gmail.com?subject=Custom PHP Settings Support', 'customphpsettings@gmail.com' ) ;
         ?></p>
         <p><?php 
         echo  sprintf( __( 'There is also a slack channel that you can <a target="_blank" href="%s">join</a>.', 'custom-php-settings' ), 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ' ) ;

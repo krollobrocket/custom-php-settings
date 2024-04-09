@@ -1,11 +1,11 @@
 === Custom PHP Settings ===
-Contributors: cyclonecode, freemius
+Contributors: cyclonecode
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 3.1.0
-Tested up to: 6.4.3
+Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,15 +124,7 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.0.0
+= 2.1.0
 
-- Add: DI container.
-- Add: Display database information.
-- Add: Display WordPress information.
-- Add: Support for multiple settings.
-- Add: Support for setting environment variables.
-- Add: Extended GD information.
-- Add: Support for backing up configuration file.
-- Add: Support for restoring configuration file from backup.
-- Add: Display database variables.
-- Add: Support to load configuration from disk.
+- Update: Freemius SDK to 2.7.0.
+- Fix: Deprecation warning in PHP 8+.
