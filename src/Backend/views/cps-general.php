@@ -1,6 +1,6 @@
 <?php
 
-use function  CustomPhpSettings\cps_fs ;
+use function CustomPhpSettings\cps_fs;
 $settings = '';
 $environmentVariables = array();
 $php_settings = $this->settings->get( self::FIELD_SETTINGS, array() );
@@ -31,7 +31,7 @@ if ( !cps_fs()->is_paying() ) {
 }
 ?>
     <form action="<?php 
-echo  admin_url( 'admin-post.php' ) ;
+echo admin_url( 'admin-post.php' );
 ?>" method="POST" id="main">
         <?php 
 wp_nonce_field( 'custom-php-settings-action', 'custom-php-settings-nonce' );
@@ -47,11 +47,11 @@ wp_nonce_field( 'custom-php-settings-action', 'custom-php-settings-nonce' );
                                   rows="5"
                                   name="settings"
                                   class="widefat textarea"><?php 
-echo  $settings ;
+echo $settings;
 ?></textarea>
                     </fieldset>
                     <p class="description"><?php 
-echo  __( 'Custom PHP Settings. Each setting should be in the form key=value.', 'custom-php-settings' ) ;
+echo __( 'Custom PHP Settings. Each setting should be in the form key=value.', 'custom-php-settings' );
 ?></p>
                 </td>
             </tr>
@@ -68,7 +68,7 @@ echo  __( 'Custom PHP Settings. Each setting should be in the form key=value.', 
 checked( $currentSetting[self::FIELD_UPDATE_CONFIG] );
 ?> />
                 <span class="description"><?php 
-echo  __( 'Update configuration file.', 'custom-php-settings' ) ;
+echo __( 'Update configuration file.', 'custom-php-settings' );
 ?></span>
             </td>
         </tr>
@@ -78,7 +78,7 @@ echo  __( 'Update configuration file.', 'custom-php-settings' ) ;
 checked( $currentSetting[self::FIELD_RESTORE_CONFIG] );
 ?> />
                 <span class="description"><?php 
-echo  __( 'The configuration file will be restored when the plugin is deactivated or uninstalled.', 'custom-php-settings' ) ;
+echo __( 'The configuration file will be restored when the plugin is deactivated or uninstalled.', 'custom-php-settings' );
 ?></span>
             </td>
         </tr>
@@ -88,7 +88,7 @@ echo  __( 'The configuration file will be restored when the plugin is deactivate
 checked( $currentSetting[self::FIELD_TRIM_COMMENTS] );
 ?> />
                 <span class="description"><?php 
-echo  __( 'Do not store any comments in the configuration file.', 'custom-php-settings' ) ;
+echo __( 'Do not store any comments in the configuration file.', 'custom-php-settings' );
 ?></span>
             </td>
         </tr>
@@ -98,25 +98,24 @@ echo  __( 'Do not store any comments in the configuration file.', 'custom-php-se
 checked( $currentSetting[self::FIELD_TRIM_WHITESPACES] );
 ?> />
                 <span class="description"><?php 
-echo  __( 'Do not store any blank lines in the configuration file.', 'custom-php-settings' ) ;
+echo __( 'Do not store any blank lines in the configuration file.', 'custom-php-settings' );
 ?></span>
             </td>
         </tr>
     </table>
     <?php 
-echo  get_submit_button(
+echo get_submit_button(
     __( 'Save settings', 'custom-php-settings' ),
     'primary',
     'custom-php-settings',
     false,
     array(
-    'form' => 'main',
-)
-) ;
+        'form' => 'main',
+    )
+);
 ?>
     </form>
     <?php 
-
 if ( !cps_fs()->is_paying() ) {
     ?>
     </div>
@@ -153,7 +152,7 @@ if ( !cps_fs()->is_paying() ) {
                 </div>
                 <div id="cps-upgrade">
                     <a href="<?php 
-    echo  cps_fs()->get_upgrade_url() ;
+    echo cps_fs()->get_upgrade_url();
     ?>" class="button-secondary cps-upgrade-button"><?php 
     _e( 'Learn More', 'custom-php-settings' );
     ?></a>
@@ -163,6 +162,5 @@ if ( !cps_fs()->is_paying() ) {
     </div>
     <?php 
 }
-
 ?>
 </div>

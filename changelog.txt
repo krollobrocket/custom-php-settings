@@ -1,3 +1,8 @@
+= 2.1.0
+
+- Update: Freemius SDK to 2.7.0.
+- Fix: Deprecation warning in PHP 8+.
+
 = 2.0.0
 
 - Add: DI container.
