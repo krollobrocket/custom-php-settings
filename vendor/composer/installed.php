@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'cyclonecode/custom-php-settings',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'f89e4b0027042d02d889b8f64aa98b3f28598a45',
+        'pretty_version' => 'dev-next',
+        'version' => 'dev-next',
+        'reference' => 'aefb5dab786642c31f9feb5c843cad2692dcf4c2',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'cyclonecode/custom-php-settings' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'f89e4b0027042d02d889b8f64aa98b3f28598a45',
+            'pretty_version' => 'dev-next',
+            'version' => 'dev-next',
+            'reference' => 'aefb5dab786642c31f9feb5c843cad2692dcf4c2',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

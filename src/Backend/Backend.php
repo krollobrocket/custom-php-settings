@@ -6,7 +6,7 @@ use CustomPhpSettings\Plugin\Settings\Settings;
 use CustomPhpSettings\DI\Container;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.1.1';
+    const VERSION = '2.1.2';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
@@ -848,18 +848,15 @@ class Backend {
         $setting = explode( '=', preg_replace( '/("[^"\\r\\n]+")|\\s*/', '\\1', html_entity_decode( $setting ) ) );
         // Lock down for specific settings for the free version.
         $lockedSettings = array();
-        /*
-                if (!cps_fs()->is__premium_only()) {
-                    $lockedSettings = [
-                        'max_file_uploads',
-                        'max_input_vars',
-                        'max_input_time',
-                        'post_max_size',
-                    ];
-                    $iniSettings = array_filter($iniSettings, function ($setting) use ($lockedSettings) {
-                        return !in_array($setting, $lockedSettings);
-                    });
-                }*/
+        $lockedSettings = [
+            'max_file_uploads',
+            'max_input_vars',
+            'max_input_time',
+            'post_max_size'
+        ];
+        $iniSettings = array_filter( $iniSettings, function ( $setting ) use($lockedSettings) {
+            return !in_array( $setting, $lockedSettings );
+        } );
         if ( count( $setting ) === 1 ) {
             if ( strlen( $setting[0] ) === 0 ) {
                 // This is a blank line.
