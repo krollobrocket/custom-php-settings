@@ -1,11 +1,11 @@
 === Custom PHP Settings ===
-Contributors: cyclonecode
+Contributors: cyclonecode, freemius
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 3.1.0
-Tested up to: 6.5
+Tested up to: 6.5.5
 Requires PHP: 5.6
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,6 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.1.2
+= 2.1.3
 
-- Add: Lockdown some settings.
+- Update: Freemius SDK to 2.7.3.
