@@ -6,7 +6,7 @@ use CustomPhpSettings\Plugin\Settings\Settings;
 use CustomPhpSettings\DI\Container;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.1.3';
+    const VERSION = '2.1.4';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
@@ -606,12 +606,14 @@ class Backend {
      */
     protected function getVariablesAsArray() {
         $section = array();
+        $section[] = '<IfModule mod_env.c>';
         $settingIndex = $this->settings->get( self::FIELD_SETTING_INDEX, 0 );
         foreach ( $this->settings->settings[$settingIndex][self::FIELD_ENV] as $key => $variable ) {
             $name = key( $variable );
             $value = $variable[$name];
             $section[] = 'SetEnv ' . $name . ' ' . $value;
         }
+        $section[] = '</IfModule>';
         return $section;
     }
 
