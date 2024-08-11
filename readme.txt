@@ -2,10 +2,10 @@
 Contributors: cyclonecode, freemius
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
-Requires at least: 3.1.0
+Requires at least: 4.1.0
 Tested up to: 6.6.1
 Requires PHP: 5.6
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,7 @@ You will then be able to easily switch between the different configurations entr
 
 In the premium version, when running PHP as an apache module and using an **.htaccess** file for configuration, you are able
 to add custom environment variables. These will be accessible by using the super global **$_SERVER** array.
+In order for this to work you will need to have the mod_env module enabled in your apache setup.
 
 = Resources =
 
@@ -124,6 +125,6 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.1.4
+= 2.1.5
 
-- Update: Check so mod_env is loaded.
+- Update: Freemius SDK to 2.7.4.
