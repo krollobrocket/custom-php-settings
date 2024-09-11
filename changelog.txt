@@ -1,3 +1,7 @@
+= 2.1.5
+
+- Update: Freemius SDK to 2.7.4.
+
 = 2.1.4
 
 - Update: Check so mod_env is loaded.
