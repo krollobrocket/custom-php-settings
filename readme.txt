@@ -3,9 +3,9 @@ Contributors: cyclonecode
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 4.1.0
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 Requires PHP: 5.6
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,6 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.2.0
+= 2.2.1
 
-- Update: Freemius SDK to 2.8.0.
+- Update: Freemius SDK to 2.8.1.

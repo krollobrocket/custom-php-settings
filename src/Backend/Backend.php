@@ -6,7 +6,7 @@ use CustomPhpSettings\Plugin\Settings\Settings;
 use CustomPhpSettings\DI\Container;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.2.0';
+    const VERSION = '2.2.1';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
