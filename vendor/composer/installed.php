@@ -3,7 +3,7 @@
         'name' => 'cyclonecode/custom-php-settings',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '16c80e7fcedf8012a9fb1fd353b772ae8d89a57c',
+        'reference' => '684c6049c4beaf05102dcc7cce675342a259c2b9',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'cyclonecode/custom-php-settings' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '16c80e7fcedf8012a9fb1fd353b772ae8d89a57c',
+            'reference' => '684c6049c4beaf05102dcc7cce675342a259c2b9',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
