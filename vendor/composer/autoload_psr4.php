@@ -6,10 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CustomPhpSettings\\Psr\\Container\\' => array($baseDir . '/src/Vendor/psr/container/src'),
-    'CustomPhpSettings\\PhpDocReader\\' => array($baseDir . '/src/Vendor/php-di/phpdoc-reader/src/PhpDocReader'),
-    'CustomPhpSettings\\Invoker\\' => array($baseDir . '/src/Vendor/php-di/invoker/src'),
-    'CustomPhpSettings\\Interop\\Container\\' => array($baseDir . '/src/Vendor/container-interop/container-interop/src/Interop/Container'),
-    'CustomPhpSettings\\DI\\' => array($baseDir . '/src/Vendor/php-di/php-di/src/DI'),
     'CustomPhpSettings\\' => array($baseDir . '/src'),
 );

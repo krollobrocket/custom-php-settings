@@ -3,10 +3,9 @@
 namespace CustomPhpSettings\Backend;
 
 use CustomPhpSettings\Plugin\Settings\Settings;
-use CustomPhpSettings\DI\Container;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.2.2';
+    const VERSION = '2.3.0';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
@@ -21,6 +20,8 @@ class Backend {
     const FIELD_SETTING_NAME = 'name';
 
     const FIELD_SETTING_INDEX = 'settingIndex';
+
+    const FIELD_PHP_SETTINGS = 'php_settings';
 
     const FIELD_PHP = 'php';
 
@@ -53,11 +54,6 @@ class Backend {
     private $settings;
 
     /**
-     * @var Container
-     */
-    private $container;
-
-    /**
      * @var string $capability
      */
     private $capability = 'manage_options';
@@ -78,13 +74,11 @@ class Backend {
     private $fileSystem = null;
 
     /**
-     * @param Container $container
      * @param Settings $settings
      */
-    public function __construct( Container $container, Settings $settings ) {
+    public function __construct( $settings ) {
         // Allow people to change what capability is required to use this plugin.
         $this->capability = apply_filters( 'custom_php_settings_cap', $this->capability );
-        $this->container = $container;
         $this->settings = $settings;
         $this->checkForUpgrade();
         $this->setTabs();
@@ -370,17 +364,10 @@ class Backend {
             if ( function_exists( 'wp_enqueue_code_editor' ) && ($this->getCurrentTab() === 'general' || $this->getCurrentTab() === 'backup') ) {
                 wp_enqueue_code_editor( array() );
             }
-            // TODO: Would be better if we could load it locally.
-            wp_enqueue_script(
-                'jquery-ui',
-                'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js',
-                array('jquery'),
-                '1.13.2'
-            );
             wp_enqueue_script(
                 'custom-php-settings',
                 plugin_dir_url( __FILE__ ) . 'js/admin.js',
-                array('jquery'),
+                array('jquery-effects-pulsate'),
                 self::VERSION,
                 true
             );
@@ -446,7 +433,7 @@ class Backend {
             if ( $this->settings->get( self::FIELD_VERSION ) < '2.0.0' ) {
                 $currentSettings = array(array(
                     self::FIELD_SETTING_NAME     => __( 'Default', 'custom-php-settings' ),
-                    self::FIELD_PHP              => $this->settings->get( 'php_settings', array() ),
+                    self::FIELD_PHP              => $this->settings->get( self::FIELD_PHP_SETTINGS, array() ),
                     self::FIELD_ENV              => array(),
                     self::FIELD_UPDATE_CONFIG    => $this->settings->get( self::FIELD_UPDATE_CONFIG, false ),
                     self::FIELD_RESTORE_CONFIG   => $this->settings->get( self::FIELD_RESTORE_CONFIG, false ),
@@ -457,7 +444,7 @@ class Backend {
                 $this->settings->remove( self::FIELD_RESTORE_CONFIG );
                 $this->settings->remove( self::FIELD_TRIM_COMMENTS );
                 $this->settings->remove( self::FIELD_TRIM_WHITESPACES );
-                $this->settings->remove( 'php_settings' );
+                $this->settings->remove( self::FIELD_PHP_SETTINGS );
                 $this->settings->set( self::FIELD_SETTINGS, $currentSettings );
                 $this->settings->set( self::FIELD_SETTING_INDEX, 0 );
                 $this->settings->set( self::FIELD_NOTIFICATIONS, $defaults['notes'] );
@@ -816,7 +803,7 @@ class Backend {
      *
      * @return array
      */
-    protected function getDatabaseInfo() : array {
+    protected function getDatabaseInfo() {
         global $wpdb;
         $host = $wpdb->dbhost;
         $host = explode( ':', $host );

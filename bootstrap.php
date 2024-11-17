@@ -4,7 +4,7 @@
  * Plugin Name: Custom PHP settings
  * Plugin URI: https://wordpress.org/plugins/custom-php-settings/
  * Description: Customize PHP settings.
- * Version: 2.2.2
+ * Version: 2.3.0
  * Requires at least: 4.1.0
  * Requires PHP: 5.6
  * Author: Cyclonecode
@@ -21,16 +21,7 @@ namespace CustomPhpSettings;
 
 require_once __DIR__ . '/vendor/autoload.php';
 use CustomPhpSettings\Backend\Backend;
-use CustomPhpSettings\DI\ContainerBuilder;
-$builder = new ContainerBuilder();
-$builder->addDefinitions( __DIR__ . '/config/config.php' );
-if ( defined( 'CUSTOM_PHP_SETTINGS_COMPILE' ) ) {
-    $builder->enableCompilation( sys_get_temp_dir() );
-}
-function cps_get_container() {
-    return $GLOBALS['cps_container'];
-}
-
+use CustomPhpSettings\Plugin\Settings\Settings;
 if ( !function_exists( 'cps_fs' ) ) {
     // Create a helper function for easy SDK access.
     function cps_fs() {
@@ -60,10 +51,9 @@ if ( !function_exists( 'cps_fs' ) ) {
     // Signal that SDK was initiated.
     do_action( 'cps_fs_loaded' );
 }
-$GLOBALS['cps_container'] = $builder->build();
 add_action( 'plugins_loaded', function () {
     if ( is_admin() ) {
-        cps_get_container()->get( Backend::class );
+        new Backend(new Settings(Backend::SETTINGS_NAME));
     }
 } );
 register_activation_hook( __FILE__, array('CustomPhpSettings\\Backend\\Backend', 'activate') );
