@@ -1,3 +1,8 @@
+= 2.3.0
+
+- Remove: DI container to support PHP 5.6.
+- Update: Enqueue jquery-ui scripts locally.
+
 = 2.2.2
 
 - Update: Freemius SDK to 2.9.0.

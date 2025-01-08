@@ -5,7 +5,7 @@ namespace CustomPhpSettings\Backend;
 use CustomPhpSettings\Plugin\Settings\Settings;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.3.0';
+    const VERSION = '2.3.1';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
@@ -84,7 +84,6 @@ class Backend {
         $this->setTabs();
         $this->addActions();
         $this->addFilters();
-        $this->localize();
         $this->sortSuperGlobals();
     }
 
@@ -100,7 +99,7 @@ class Backend {
     /**
      * Localize plugin.
      */
-    protected function localize() {
+    public function localize() {
         load_plugin_textdomain( 'custom-php-settings', false, dirname( plugin_basename( __FILE__ ) ) . '/../../languages' );
     }
 
@@ -108,6 +107,7 @@ class Backend {
      * Add actions.
      */
     public function addActions() {
+        add_action( 'init', array($this, 'localize') );
         add_action( 'admin_menu', array($this, 'addMenu') );
         add_action( 'in_admin_header', array($this, 'addHeader') );
         add_action( 'admin_post_custom_php_settings_save_settings', array($this, 'saveSettings') );
