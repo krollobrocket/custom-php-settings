@@ -5,7 +5,7 @@ Tags: php, htaccess, settings, apache, apache2
 Requires at least: 4.1.0
 Tested up to: 6.7.1
 Requires PHP: 5.6
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,7 +125,6 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.3.1
+= 2.3.2
 
-- Update: Freemius SDK to 2.10.1.
-- Fix: Load translations on init action.
+- Update: Freemius SDK to 2.11.0.

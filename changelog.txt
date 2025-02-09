@@ -1,3 +1,8 @@
+= 2.3.1
+
+- Update: Freemius SDK to 2.10.1.
+- Fix: Load translations on init action.
+
 = 2.3.0
 
 - Remove: DI container to support PHP 5.6.
