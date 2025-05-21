@@ -5,7 +5,7 @@ namespace CustomPhpSettings\Backend;
 use CustomPhpSettings\Plugin\Settings\Settings;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.3.2';
+    const VERSION = '2.3.3';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
@@ -725,6 +725,9 @@ class Backend {
         if ( !$fileName ) {
             /* translators: %s: Name of configuration file */
             $message = sprintf( __( 'Settings updated and stored in %s.', 'custom-php-settings' ), $configFile );
+            if ( self::getCGIMode() ) {
+                $message .= '<br />' . sprintf( __( 'You may need to wait for up to %d seconds before any changes takes effect.', 'custom-php-settings' ), ini_get( 'user_ini.cache_ttl' ) );
+            }
             $this->addSettingsMessage( $message, 'updated' );
         }
         self::addMarker(

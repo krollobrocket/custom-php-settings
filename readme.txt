@@ -3,9 +3,9 @@ Contributors: cyclonecode
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 4.1.0
-Tested up to: 6.7.1
+Tested up to: 6.8.1
 Requires PHP: 5.6
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,14 @@ php_value variables_order EPCS  <-- Remove
 # END CUSTOM PHP SETTINGS PRO
 `
 
+If you are running PHP in CGI/Fast-CGI mode then instead remove everything between the plugins markers in your **.user.ini** file:
+
+`
+; BEGIN CUSTOM PHP SETTINGS
+php_value variables_order EPCS  <-- Remove
+; END CUSTOM PHP SETTINGS
+`
+
 == Frequently Asked Questions ==
 
 = I have saved a setting in the editor but the PHP setting does not reflect this? =
@@ -122,9 +130,15 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 5. Listing of all enabled PHP extensions.
 6. All $_SERVER variables.
 7. All $_COOKIE variables.
+8. An example of backed up configuration files.
+9. Multiple settings are available in the premium version.
+10. The premium version supports setting environment variables.
 
 == Changelog ==
 
-= 2.3.2
+= 2.3.3
 
-- Update: Freemius SDK to 2.11.0.
+- Update: Freemius SDK to 2.12.0.
+- Update: Display improved notice when saving settings in CGI/Fast-CGI mode.
+- Fix: Display no available backups when needed.
+- Update: Add warning for CGI/Fast-CGI mode.
