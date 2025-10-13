@@ -3,9 +3,9 @@ Contributors: cyclonecode
 Donate link: https://www.buymeacoffee.com/cyclonecode
 Tags: php, htaccess, settings, apache, apache2
 Requires at least: 4.1.0
-Tested up to: 6.8.1
+Tested up to: 6.8.3
 Requires PHP: 5.6
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,9 +136,6 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.3.3
+= 2.3.4
 
-- Update: Freemius SDK to 2.12.0.
-- Update: Display improved notice when saving settings in CGI/Fast-CGI mode.
-- Fix: Display no available backups when needed.
-- Update: Add warning for CGI/Fast-CGI mode.
+- Update: Freemius SDK to 2.12.2.

@@ -1,3 +1,10 @@
+= 2.3.3
+
+- Update: Freemius SDK to 2.12.0.
+- Update: Display improved notice when saving settings in CGI/Fast-CGI mode.
+- Fix: Display no available backups when needed.
+- Update: Add warning for CGI/Fast-CGI mode.
+
 = 2.3.2
 
 - Update: Freemius SDK to 2.11.0.
