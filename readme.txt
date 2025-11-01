@@ -5,7 +5,7 @@ Tags: php, htaccess, settings, apache, apache2
 Requires at least: 4.1.0
 Tested up to: 6.8.3
 Requires PHP: 5.6
-Stable tag: 2.3.4
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ This plugin makes it possible to override php settings.
 
 == Description ==
 
-This plugin can be used to customize php settings for you wordpress installation.
+This plugin can be used to customize php settings for you WordPress installation.
 
 The plugin will modify either the **.htaccess** file or **.user.ini** file in order to change the current php settings directly from within the settings page.
 
@@ -52,7 +52,7 @@ deny from all
 
 The settings table will display all non-system php settings that can be customized by the plugin. All modified settings will be displayed in red in this table.
 
-Some settings might be displayed in red because they are changed somewhere else, perhaps through a customized php.ini file, by wordpress itself, a plugin or in some other way.
+Some settings might be displayed in red because they are changed somewhere else, perhaps through a customized php.ini file, by WordPress itself, a plugin or in some other way.
 For instance if you have enabled **WP_DEBUG** in your **wp-config.php** file the **error_reporting** setting will turn red.
 
 If you have questions or perhaps some idea on things that should be added you can also try [slack](https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ).
@@ -123,7 +123,7 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Screenshots ==
 
-1. Customize PHP settings from within wordpress administration.
+1. Customize PHP settings from within WordPress administration.
 2. A `.htaccess` file with customized PHP settings.
 3. A table with all php settings that can be customized.
 4. Table displaying information about the current php environment.
@@ -136,6 +136,7 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.3.4
+= 2.4.0
 
-- Update: Freemius SDK to 2.12.2.
+- Update: Add Freemius SDK as a composer dependency.
+- Fix: Use after_setup_theme to initialize the plugin.

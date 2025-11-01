@@ -5,7 +5,7 @@ namespace CustomPhpSettings\Backend;
 use CustomPhpSettings\Plugin\Settings\Settings;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.3.4';
+    const VERSION = '2.4.0';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
