@@ -1,6 +1,10 @@
 #custom-php-settings-admin-header {
     padding-top: 20px;
 }
+#custom-php-settings-admin-header > div {
+  float: left;
+  width: 100%;
+}
 #custom-php-settings-admin-header h1 {
     font-size: 23px;
     font-weight: 400;

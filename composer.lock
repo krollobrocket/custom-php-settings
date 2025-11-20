@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "704567b9a4da30f0c8cf0ce75378deff",
+    "content-hash": "7fff6414e7667582d01d15f7d91a5390",
     "packages": [
         {
             "name": "freemius/wordpress-sdk",
-            "version": "2.12.2",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Freemius/wordpress-sdk.git",
-                "reference": "241fbfc91151f85d8ebeb75343caf29bda1d3208"
+                "reference": "3cbe98b5bd0b0fb5ca4df97b8088592737ea4375"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Freemius/wordpress-sdk/zipball/241fbfc91151f85d8ebeb75343caf29bda1d3208",
-                "reference": "241fbfc91151f85d8ebeb75343caf29bda1d3208",
+                "url": "https://api.github.com/repos/Freemius/wordpress-sdk/zipball/3cbe98b5bd0b0fb5ca4df97b8088592737ea4375",
+                "reference": "3cbe98b5bd0b0fb5ca4df97b8088592737ea4375",
                 "shasum": ""
             },
             "require": {
@@ -55,9 +55,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Freemius/wordpress-sdk/issues",
-                "source": "https://github.com/Freemius/wordpress-sdk/tree/2.12.2"
+                "source": "https://github.com/Freemius/wordpress-sdk/tree/2.13.0"
             },
-            "time": "2025-09-15T14:36:55+00:00"
+            "time": "2025-11-11T07:52:08+00:00"
         }
     ],
     "packages-dev": [
@@ -214,16 +214,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.13.4",
+            "version": "3.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "ad545ea9c1b7d270ce0fc9cbfb884161cd706119"
+                "reference": "0ca86845ce43291e8f5692c7356fccf3bcf02bf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ad545ea9c1b7d270ce0fc9cbfb884161cd706119",
-                "reference": "ad545ea9c1b7d270ce0fc9cbfb884161cd706119",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/0ca86845ce43291e8f5692c7356fccf3bcf02bf4",
+                "reference": "0ca86845ce43291e8f5692c7356fccf3bcf02bf4",
                 "shasum": ""
             },
             "require": {
@@ -240,11 +240,6 @@
                 "bin/phpcs"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -294,7 +289,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-09-05T05:47:09+00:00"
+            "time": "2025-11-04T16:30:35+00:00"
         }
     ],
     "aliases": [],

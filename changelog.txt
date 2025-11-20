@@ -1,3 +1,8 @@
+= 2.4.0
+
+- Update: Add Freemius SDK as a composer dependency.
+- Fix: Use after_setup_theme to initialize the plugin.
+
 = 2.3.4
 
 - Update Freemius SDK to 2.12.2

@@ -5,7 +5,7 @@ namespace CustomPhpSettings\Backend;
 use CustomPhpSettings\Plugin\Settings\Settings;
 use function CustomPhpSettings\cps_fs;
 class Backend {
-    const VERSION = '2.4.0';
+    const VERSION = '2.4.1';
 
     const SETTINGS_NAME = 'custom_php_settings';
 
@@ -210,7 +210,7 @@ class Backend {
             return ( $a['weight'] === $b['weight'] ? 0 : $a['weight'] - $b['weight'] );
         } );
         foreach ( $notes as $note ) {
-            if ( is_callable( [$this, $note['callback']] ) && (!$note['dismissed'] || $note['dismissed'] && !$note['persistent'] && time() - $note['time'] > 30 * 24 * 60 * 60) ) {
+            if ( is_callable( [$this, $note['callback']] ) && (!$note['dismissed'] || !$note['persistent'] && time() - $note['time'] > 30 * 24 * 60 * 60) ) {
                 ?>
                 <div id="note-<?php 
                 echo $note['id'];
@@ -268,7 +268,7 @@ class Backend {
         echo sprintf( __( 'I can also be reached by email at <a href="%s">%s</a>', 'custom-php-settings' ), 'mailto:customphpsettings@gmail.com?subject=Custom PHP Settings Support', 'customphpsettings@gmail.com' );
         ?></p>
         <p><?php 
-        echo sprintf( __( 'There is also a slack channel that you can <a target="_blank" href="%s">join</a>.', 'custom-php-settings' ), 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ' );
+        echo sprintf( __( 'There is also a Slack channel that you can <a target="_blank" href="%s">join</a>.', 'custom-php-settings' ), 'https://join.slack.com/t/cyclonecode/shared_invite/zt-6bdtbdab-n9QaMLM~exHP19zFDPN~AQ' );
         ?></p>
         <p><?php 
         _e( 'I hope you will have an awesome day!', 'custom-php-settings' );
@@ -305,7 +305,7 @@ class Backend {
         }
         ?>
         <div id="custom-php-settings-admin-header">
-            <span><img width="64" src="<?php 
+            <div><img width="64" src="<?php 
         echo plugin_dir_url( __FILE__ );
         ?>assets/icon-128x128.png" alt="<?php 
         _e( 'Custom PHP Settings', 'custom-php-settings' );
@@ -314,7 +314,7 @@ class Backend {
         _e( 'Custom PHP Settings', 'custom-php-settings' );
         echo $title;
         ?></h1>
-            </span>
+            </div>
         </div>
         <?php 
     }
@@ -342,7 +342,7 @@ class Backend {
      * Filters the array of row meta for each plugin in the Plugins list table.
      *
      * @param string[] $plugin_meta An array of the plugin's metadata.
-     * @param string   $plugin_file Path to the plugin file relative to the plugins directory.
+     * @param string   $plugin_file Path to the plugin file relative to the plugins' directory.
      * @return string[] An array of the plugin's metadata.
      */
     public function filterPluginRowMeta( array $plugin_meta, $plugin_file ) {
@@ -779,6 +779,10 @@ class Backend {
             __( 'Description', 'custom-php-settings' )             => 'description',
             __( 'WordPress Address (URL)', 'custom-php-settings' ) => 'wpurl',
             __( 'Site Address (URL)', 'custom-php-settings' )      => 'url',
+            __( 'Stylesheet URL', 'custom-php-settings' )          => 'stylesheet_url',
+            __( 'Stylesheet Directory', 'custom-php-settings' )    => 'stylesheet_directory',
+            __( 'Template URL', 'custom-php-settings' )            => 'template_url',
+            __( 'Pingback URL', 'custom-php-settings' )            => 'pingback_url',
             __( 'Admin Email', 'custom-php-settings' )             => 'admin_email',
             __( 'Charset', 'custom-php-settings' )                 => 'charset',
             __( 'HTML Type', 'custom-php-settings' )               => 'html_type',
@@ -797,6 +801,7 @@ class Backend {
             __( 'Timezone', 'custom-php-settings' )         => wp_timezone_string(),
             __( 'Development Mode', 'custom-php-settings' ) => wp_get_development_mode(),
             __( 'Environment Type', 'custom-php-settings' ) => wp_get_environment_type(),
+            __( 'Server Software', 'custom-php-settings' )  => ( isset( $_SERVER['SERVER_SOFTWARE'] ) ? $_SERVER['SERVER_SOFTWARE'] : 'N/A' ),
         ) );
         return $data;
     }

@@ -5,7 +5,7 @@ Tags: php, htaccess, settings, apache, apache2
 Requires at least: 4.1.0
 Tested up to: 6.8.3
 Requires PHP: 5.6
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,7 +136,8 @@ You can also try contacting me on [slack](https://join.slack.com/t/cyclonecode/s
 
 == Changelog ==
 
-= 2.4.0
+= 2.4.1
 
-- Update: Add Freemius SDK as a composer dependency.
-- Fix: Use after_setup_theme to initialize the plugin.
+- Update: Freemius SDK to 2.13.0.
+- Update: Add more WordPress information.
+- Update: Add Server Software in status page.
